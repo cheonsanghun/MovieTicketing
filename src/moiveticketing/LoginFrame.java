@@ -163,8 +163,10 @@ public class LoginFrame extends JFrame {
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                dispose();
+          
+                  
                 Membership membership = new Membership();
+          
             }
         });
 
