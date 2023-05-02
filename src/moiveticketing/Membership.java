@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class Membership extends JFrame implements ActionListener  {
+public class Membership extends JFrame implements ActionListener {
 
     List<LoginDto> companys;
     Connection conn;
@@ -34,7 +34,7 @@ public class Membership extends JFrame implements ActionListener  {
     JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9;
     List<LoginDto> LoginDatas;
     boolean isSuccess;
-    
+
     //프레임 화면 gui
     Membership() {
         p = new JPanel();
@@ -50,7 +50,6 @@ public class Membership extends JFrame implements ActionListener  {
         cancel = new JButton("취소");
         cancel.setLayout(null);
         cancel.setBounds(310, 700, 250, 50);
-
 
         name = new JTextField();
         name.setLayout(null);
@@ -147,16 +146,17 @@ public class Membership extends JFrame implements ActionListener  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new LoginFrame();
+
             }
         });
     }
-    
+
     public void actionPerformed(ActionEvent e) { // 버튼 클릭시에 발동되는 메소드
         if (e.getActionCommand().equals("add")) {
             addAction();
         }
     }
+
     //데이터 입력후 회원가입 확인여부
     private void addAction() {
         String uname = name.getText();
@@ -168,7 +168,13 @@ public class Membership extends JFrame implements ActionListener  {
         String umail = mail.getText();
         String uaddress = address.getText();
         //빌더 패턴 적용
-    
+        
+        if (uid.replaceAll(" ", "").equals("") || upw.replaceAll(" ", "").equals("") || uname.replaceAll(" ", "").equals("")
+                || uage.replaceAll(" ", "").equals("") || upwreconfirm.replaceAll(" ", "").equals("") || uphone.replaceAll(" ", "").equals("")
+                || umail.replaceAll(" ", "").equals("") || uaddress.replaceAll(" ", "").equals("")) {
+            JOptionPane.showMessageDialog(null, "입력 방식이 옳지 않습니다. ", "입력 오류", JOptionPane.DEFAULT_OPTION);
+            return;
+        }
         if (uname.length() == 0 || uage.length() == 0 || uid.length() == 0 || upw.length() == 0 || uphone.length() == 0 || umail.length() == 0 || uaddress.length() == 0) {
             JOptionPane.showMessageDialog(this, "빈칸을 입력해주세요.");
         } else {
@@ -176,11 +182,9 @@ public class Membership extends JFrame implements ActionListener  {
             String passwordCheck2 = new String(upwreconfirm);
             if (!password2.equals(passwordCheck2)) {
                 JOptionPane.showMessageDialog(this, "비밀번호가 일치하지 않습니다.", "오류", JOptionPane.ERROR_MESSAGE);
-              
-            }
-            else {
-               
-                
+
+            } else {
+
                 //빌더 패턴 적용
                 LoginDto dto = new LoginDto.Builder()
                         .setName(uname)
@@ -193,20 +197,18 @@ public class Membership extends JFrame implements ActionListener  {
                         .build();
                 isSuccess = new ProfileManagerModeDao().insert(dto);
 
-        if (isSuccess) {
-            JOptionPane.showMessageDialog(this, "저장 했습니다.");
-             setVisible(false);
-            //행의 갯수를 강제로 0 로 만들고    
-        } else {
-            JOptionPane.showMessageDialog(this, "저장 실패! 중복된 아이디가 있습니다.");
-            setVisible(true);
-        }
-               
-                
+                if (isSuccess) {
+                    JOptionPane.showMessageDialog(this, "저장 했습니다.");
+                    setVisible(false);
+                    //행의 갯수를 강제로 0 로 만들고    
+                } else {
+                    JOptionPane.showMessageDialog(this, "저장 실패! 중복된 아이디가 있습니다.");
+                    setVisible(true);
+                }
+
             }
         }
-      
 
     }
-    
+
 }

@@ -194,6 +194,7 @@ public class LoginFrame extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 Home home = new Home();
+                setVisible(false);
             }
         });
 
