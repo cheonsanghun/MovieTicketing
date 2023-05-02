@@ -14,6 +14,7 @@ public class MoiveTicketing {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //메인메서드
         new Home();
     }
     

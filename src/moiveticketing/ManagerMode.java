@@ -4,6 +4,8 @@
  */
 package moiveticketing;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.beans.PropertyChangeEvent;
@@ -30,7 +32,7 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
     List<LoginDto> companys;
 
     ManagerMode() {
-
+        //관리자화면 프레임 gui 
         p = new JPanel();
         p.setLayout(null);
         setSize(1000, 700);
@@ -74,18 +76,26 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
         mainname.setLayout(null);
 
         back = new JButton("뒤로가기");
+        back.setBackground(Color.white);
+        back.setFont(new Font("맑은 고딕", Font.BOLD, 14));
         back.setBounds(885, 631, 100, 30);
         back.setLayout(null);
 
         insert = new JButton("추가");
+        insert.setBackground(Color.white);
+        insert.setFont(new Font("맑은 고딕", Font.BOLD, 14));
         insert.setBounds(280, 110, 100, 30);
         insert.setLayout(null);
 
         update = new JButton("수정");
+        update.setBackground(Color.white);
+        update.setFont(new Font("맑은 고딕", Font.BOLD, 14));
         update.setBounds(430, 110, 100, 30);
         update.setLayout(null);
 
         delete = new JButton("삭제");
+        delete.setBackground(Color.white);
+        delete.setFont(new Font("맑은 고딕", Font.BOLD, 14));
         delete.setBounds(580, 110, 100, 30);
         delete.setLayout(null);
 
@@ -109,8 +119,8 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
         p.add(update);
         p.add(delete);
         add(p);
- 
-        String[] colNames = {"이름","나이","아이디", "비밀번호", "폰번호", "메일", "주소"};
+
+        String[] colNames = {"이름", "나이", "아이디", "비밀번호", "폰번호", "메일", "주소"};
         // 테이블에 출력할 데이터를 가지고있는 디폴트모델테이블
         dft = new DefaultTableModel(colNames, 0) {
             //수정 가능 여부를 리턴하는 메소드
@@ -126,28 +136,27 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
             }
         };
 
-         table = new JTable(dft);
+        table = new JTable(dft);
         // 스크롤 생성
         JScrollPane pane = new JScrollPane(table);
 
         pane.setBounds(65, 200, 850, 400);
         p.add(pane);
         // 테이블 셀에 수정작업이 일어났는지 감시할 리스너 등록
-        table.addPropertyChangeListener(this); 
+        table.addPropertyChangeListener(this);
         //테이블에 회원목록 추가하기
-        showMembers();  
+        showMembers();
         //주기적으로 리프레쉬하기
         autoRefresh();
-        
-         insert.addActionListener(this);
+
+        insert.addActionListener(this);
         delete.addActionListener(this);
-        update.addActionListener(this);       
+        update.addActionListener(this);
         insert.setActionCommand("add");
         delete.setActionCommand("delete");
         update.setActionCommand("수정");
-        
-        
-             insert.addActionListener(new ActionListener() {
+
+        insert.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("add")) {
@@ -172,11 +181,11 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
                 showMembers();
             }
         });
-  back.addActionListener(new ActionListener() {
+        back.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-               Home home = new Home();
-               home.setVisible(true);
+                Home home = new Home();
+                home.setVisible(true);
                 setVisible(false);
             }
         });
@@ -189,11 +198,11 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
             //선택된 row 의 index 를 얻어와서 
             int index = table.getSelectedRow();
             //인덱스에 해당하는 model 에서 입력된 이름과 주소를 읽어온다. 
-            String name = (String) dft.getValueAt(index, 0); //2번째 인덱스의 주소를 읽어옴ㅁ
-            String age = (String) dft.getValueAt(index, 1); //1번째 인덱스의 이름을 읽어옴ㅇ
+            String name = (String) dft.getValueAt(index, 0); //2번째 인덱스의 주소를 읽어옴
+            String age = (String) dft.getValueAt(index, 1); //1번째 인덱스의 이름을 읽어옴
             String id = (String) dft.getValueAt(index, 2); //0번째 인덱스의 번호를 읽어옴
-            String pw = (String) dft.getValueAt(index, 3); //1번째 인덱스의 이름을 읽어옴ㅇ
-            String phone = (String) dft.getValueAt(index, 4); //1번째 인덱스의 이름을 읽어옴ㅇ
+            String pw = (String) dft.getValueAt(index, 3); //1번째 인덱스의 이름을 읽어옴
+            String phone = (String) dft.getValueAt(index, 4); //1번째 인덱스의 이름을 읽어옴
             String mail = (String) dft.getValueAt(index, 5); //3번째 인덱스의 입사일을 읽어옴
             String address = (String) dft.getValueAt(index, 6); //3번째 인덱스의 입사일을 읽어옴
             //DB 에 수정 반영

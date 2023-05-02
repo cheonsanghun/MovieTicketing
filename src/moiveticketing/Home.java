@@ -5,12 +5,12 @@
 package moiveticketing;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-
 
 public class Home extends JFrame {
 
@@ -18,22 +18,25 @@ public class Home extends JFrame {
     JPanel j;
 
     Home() {
-        
+
         setSize(800, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // 화면 가운데 배치
         setTitle("모드 선택");
+        setBackground(Color.white);
         setVisible(true);
-        
+
         j = new JPanel();
         j.setBackground(Color.white);
         j.setLayout(null);
 
         b1 = new JButton("사용자 모드");
+        b1.setFont(new Font("맑은 고딕", Font.BOLD, 14));
         b1.setBackground(Color.white);
         b1.setLayout(null);
 
         b2 = new JButton("관리자 모드");
+        b2.setFont(new Font("맑은 고딕", Font.BOLD, 14));
         b2.setBackground(Color.white);
         b2.setLayout(null);
 
@@ -55,8 +58,8 @@ public class Home extends JFrame {
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ManagerMode managerMode = new ManagerMode();
-                setVisible(false);
+                ManagerLogin managerlogin = new ManagerLogin();
+
             }
         });
 

@@ -34,7 +34,8 @@ public class Membership extends JFrame implements ActionListener  {
     JLabel l1, l2, l3, l4, l5, l6, l7, l8, l9;
     List<LoginDto> LoginDatas;
     boolean isSuccess;
-
+    
+    //프레임 화면 gui
     Membership() {
         p = new JPanel();
         setSize(600, 800);
@@ -146,16 +147,17 @@ public class Membership extends JFrame implements ActionListener  {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
+                new LoginFrame();
             }
         });
     }
-
+    
     public void actionPerformed(ActionEvent e) { // 버튼 클릭시에 발동되는 메소드
         if (e.getActionCommand().equals("add")) {
             addAction();
         }
     }
-
+    //데이터 입력후 회원가입 확인여부
     private void addAction() {
         String uname = name.getText();
         String uage = age.getText();
