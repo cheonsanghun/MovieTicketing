@@ -281,6 +281,15 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
         dft.setRowCount(0);
         showMembers();
 
+        //작업의 성공여부를 리턴 받는다. 
+        boolean isSuccess = new ProfileManagerModeDao().delete(dto);
+
+        if (isSuccess) {
+            JOptionPane.showMessageDialog(this, "삭제 했습니다.");
+        } else {
+            JOptionPane.showMessageDialog(this, "저장 했습니다.");
+        }
+
     }
 
     // 리프레쉬 메서드

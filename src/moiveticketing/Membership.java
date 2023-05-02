@@ -195,11 +195,13 @@ public class Membership extends JFrame implements ActionListener  {
 
         if (isSuccess) {
             JOptionPane.showMessageDialog(this, "저장 했습니다.");
+             setVisible(false);
             //행의 갯수를 강제로 0 로 만들고    
         } else {
             JOptionPane.showMessageDialog(this, "저장 실패! 중복된 아이디가 있습니다.");
+            setVisible(true);
         }
-                setVisible(false);
+               
                 
             }
         }
