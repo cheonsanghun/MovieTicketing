@@ -3,15 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/moiveticketing/Home.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/moiveticketing/DbConnect.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/moiveticketing/ProfileManagerModeDao.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/moiveticketing/Membership.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/moiveticketing/MoiveTicketing.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/moiveticketing/ManagerMode.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/moiveticketing/LoginFrame.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/moiveticketing/LoginDto.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/moiveticketing/ManagerLogin.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/LoginDto/LoginDto.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/Login/LoginFrame.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/Membership/Membership.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/Main/Home.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/DbConnect/DbConnect.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/ManagerMode/ManagerLogin.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/ManagerModeDao/ProfileManagerModeDao.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/ManagerMode/ManagerMode.java</file>
+            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/movieTiketing/src/Main/MoiveTicketing.java</file>
         </group>
     </open-files>
 </project-private>

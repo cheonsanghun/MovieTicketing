@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package moiveticketing;
+package ManagerMode;
 
+import ManagerModeDao.ProfileManagerModeDao;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,7 +21,11 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-
+import Main.Home;
+import LoginDto.LoginDto;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 public class ManagerMode extends JFrame implements ActionListener, PropertyChangeListener {
 
     JPanel p;
@@ -146,9 +151,10 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
         table.addPropertyChangeListener(this);
         //테이블에 회원목록 추가하기
         showMembers();
-        //주기적으로 리프레쉬하기
-        autoRefresh();
-
+           
+        
+        table.addMouseListener((MouseListener) new MyMouseListener());
+       
         insert.addActionListener(this);
         delete.addActionListener(this);
         update.addActionListener(this);
@@ -165,22 +171,15 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
             }
         });
         delete.addActionListener(new ActionListener() {
-
+      
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("delete")) {
                     deleteAction();
                 }
+                
             }
         });
-        update.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent e) {
-                if (e.getActionCommand().equals("refresh")) {
-                    dft.setRowCount(0);
-                }
-                showMembers();
-            }
-        });
+      
         back.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -221,7 +220,6 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
         }
 
     }
-
     //회원목록 전체 출력
     public void showMembers() {
         companys = new ProfileManagerModeDao().getList();
@@ -270,9 +268,13 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
     private void deleteAction() {
         //선택된 row 의 인덱스를 얻어와서 
         int index = table.getSelectedRow();
+         if( index <0 ) {
+             JOptionPane.showMessageDialog(this,"삭제할 행을 선택해 주세요.");
+        }
         if (index == -1) {
             return;
         }
+       
         //DB 에서 삭제하고
         LoginDto dto = new LoginDto();
         dto.setPw(companys.get(index).getPw());
@@ -290,26 +292,6 @@ public class ManagerMode extends JFrame implements ActionListener, PropertyChang
             JOptionPane.showMessageDialog(this, "저장 했습니다.");
         }
 
-    }
-
-    // 리프레쉬 메서드
-    public void autoRefresh() {
-        new Thread() {
-            @Override
-            public void run() {
-                while (true) {
-
-                    try {
-                        Thread.sleep(30000);
-                    } catch (InterruptedException e) {
-                        // TODO Auto-generated catch block
-                        e.printStackTrace();
-                    }
-                    dft.setRowCount(0);
-                    showMembers();
-                }
-            }
-        }.start();
     }
 
     public void actionPerformed(ActionEvent e) {

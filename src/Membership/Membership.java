@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package moiveticketing;
+package Membership;
 
+import ManagerModeDao.ProfileManagerModeDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -19,7 +20,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-
+import LoginDto.LoginDto;
+import java.awt.Color;
 public class Membership extends JFrame implements ActionListener {
 
     List<LoginDto> companys;
@@ -36,8 +38,10 @@ public class Membership extends JFrame implements ActionListener {
     boolean isSuccess;
 
     //프레임 화면 gui
-    Membership() {
+    public Membership() {
         p = new JPanel();
+        p.setLayout(null);
+        p.setBackground(Color.white);
         setSize(600, 800);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // 화면 가운데 배치
@@ -117,26 +121,26 @@ public class Membership extends JFrame implements ActionListener {
         l9 = new JLabel(" ");
         l9.setLayout(null);
 
-        add(p);
-        add(join);
-        add(cancel);
-        add(name);
-        add(age);
-        add(id);
-        add(pw);
-        add(pwreconfirm);
-        add(phone);
-        add(mail);
-        add(address);
-        add(l1);
-        add(l2);
-        add(l3);
-        add(l4);
-        add(l5);
-        add(l6);
-        add(l7);
-        add(l8);
-        add(l9);
+           p.add(join);
+        p.add(cancel);
+        p.add(name);
+        p.add(age);
+        p.add(id);
+        p.add(pw);
+        p.add(pwreconfirm);
+        p.add(phone);
+        p.add(mail);
+        p.add(address);
+        p.add(l1);
+        p.add(l2);
+        p.add(l3);
+        p.add(l4);
+        p.add(l5);
+        p.add(l6);
+        p.add(l7);
+        p.add(l8);
+        p.add(l9);
+          add(p);
         setVisible(true);
         join.addActionListener(this);
         join.setActionCommand("add");

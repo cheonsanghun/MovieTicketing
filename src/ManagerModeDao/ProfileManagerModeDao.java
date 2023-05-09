@@ -1,4 +1,5 @@
-package moiveticketing;
+package ManagerModeDao;
+
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,7 +7,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-
+import DbConnect.DbConnect;
+import LoginDto.LoginDto;
 public class ProfileManagerModeDao {
 
     //데이터 삽입 메서드
@@ -162,6 +164,7 @@ public class ProfileManagerModeDao {
             pstmt.setString(1, dto.getPw());
             //sql 문 실행하기 (INSERT, UPDATE, DELETE)
             flag = pstmt.executeUpdate();
+          
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

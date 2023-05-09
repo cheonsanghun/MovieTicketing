@@ -1,5 +1,6 @@
-package moiveticketing;
+package Login;
 
+import LoginDto.LoginDto;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import Main.Home;
+import Membership.Membership;
 
 public class LoginFrame extends JFrame {
 
@@ -132,8 +135,10 @@ public class LoginFrame extends JFrame {
     }
 
     //해당 클래스 프레임
-    LoginFrame() {
+    public LoginFrame() {
         p = new JPanel();
+        p.setLayout(null);
+        p.setBackground(Color.white);
         setSize(800, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // 화면 가운데 배치
@@ -198,13 +203,13 @@ public class LoginFrame extends JFrame {
             }
         });
 
-        add(l1);
-        add(l2);
-        add(id);
-        add(pw);
-        add(b1);
-        add(b2);
-        add(back);
+       p.add(l1);
+        p.add(l2);
+        p.add(id);
+        p.add(pw);
+        p.add(b1);
+        p.add(b2);
+       p.add(back);
         add(p);
     }
 }

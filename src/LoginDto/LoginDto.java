@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package moiveticketing;
+package LoginDto;
 
 /**
  *
@@ -53,7 +53,7 @@ public class LoginDto {
         super();
     }
                         //∫Ù¥ı ∆–≈œ
-    public LoginDto(Builder builder) {
+    private LoginDto(Builder builder) {
         super();
         this.name = builder.name;
         this.age =  builder.age;
@@ -64,15 +64,15 @@ public class LoginDto {
         this.address =  builder.address;
     }
 
-    static class Builder {
+    public static class Builder {
 
         private String name;
         private String id;
         private String pw;
-        private String age;
-        private String phone;
-        private String mail;
-        private String address;
+         private String age;
+         private String phone;
+         private String mail;
+         private String address;
 
         public Builder() {
         }
@@ -112,7 +112,7 @@ public class LoginDto {
             return this;
         }
 
-        LoginDto build() {
+       public LoginDto build() {
           return new LoginDto(this);
         }
 
