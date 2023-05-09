@@ -48,7 +48,7 @@ public class Home extends JFrame {
         b2.setBounds(450, 230, 200, 100);
         b2.setLayout(null);
         
-          ImageIcon Logo = new ImageIcon("C:\\Users\\Admin\\OneDrive\\πŸ≈¡ »≠∏È\\movieTiketing\\src\\Main\\main.png");
+          ImageIcon Logo = new ImageIcon("C:\\Users\\Admin\\OneDrive\\πŸ≈¡ »≠∏È\\MovieTicketing\\src\\Main\\main.png");
         JLabel HDDLogo = new JLabel(Logo);
         HDDLogo.setBounds(300,0,250,250);
         HDDLogo.setLayout(null);
@@ -73,7 +73,7 @@ public class Home extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ManagerLogin managerlogin = new ManagerLogin();
-
+                
             }
         });
 
