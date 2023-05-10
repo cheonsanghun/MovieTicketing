@@ -54,7 +54,7 @@ public class ManagerLogin extends JFrame {
 
         word = new JLabel("ºñ¹Ð¹øÈ£ : ");
         word.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
-        word.setBounds(100, 120, 70, 25);
+        word.setBounds(100, 120, 80, 25);
 
         pwIn = new JPasswordField();
         pwIn.setBounds(180, 120, 200, 30);
