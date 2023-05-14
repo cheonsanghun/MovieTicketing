@@ -4,6 +4,7 @@
  */
 package ManagerMode;
 
+import Main.Home;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -29,7 +30,6 @@ public class ManagerLogin extends JFrame {
     JPanel j;
     JLabel word, infor, infor2;
     JPasswordField pwIn;
-
     public ManagerLogin() {
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -87,8 +87,8 @@ public class ManagerLogin extends JFrame {
 
                     JOptionPane.showMessageDialog(null, "로그인 확인", "로그인 확인!", JOptionPane.DEFAULT_OPTION);
                     setVisible(false);
-
-                    ManagerMode Managermode = new ManagerMode();
+                
+                    new ManagerMode();
 
                 } else {
 

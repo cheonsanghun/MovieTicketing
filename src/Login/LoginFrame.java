@@ -45,7 +45,7 @@ public class LoginFrame extends JFrame {
         @Override
         public void execute() {
             JOptionPane.showMessageDialog(null, "·Î±×ÀÎ ¼º°ø !", "·Î±×ÀÎ È®ÀÎ!", JOptionPane.DEFAULT_OPTION);
-            JFrame frame = new JFrame("???? ??ë§? ???¤í??");
+            JFrame frame = new JFrame("¿µÈ­ ¿¹¸Å ½Ã½ºÅÛ");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // TheaterPanel ???? ë°? ì¶?ê°?
@@ -53,8 +53,9 @@ public class LoginFrame extends JFrame {
         frame.getContentPane().add(theaterPanel);
         
         // JFrame ?¬ê¸° ë°? ??ì¹? ?¤ì?? ?? ë³´ì?´ë??ë¡? ??
-        frame.setSize(400, 200);
+        frame.setSize(800, 500);
         frame.setLocationRelativeTo(null);
+        setVisible(false);
         frame.setVisible(true);
         }
     }
@@ -63,18 +64,7 @@ public class LoginFrame extends JFrame {
 
         @Override
         public void execute() {
-            JOptionPane.showMessageDialog(null, "¾ÆÀÌµð ¶Ç´Â ºñ¹Ð¹øÈ£°¡ Æ²·È½À´Ï´Ù", "·Î±×ÀÎ ½ÇÆÐ", 1);
-            JFrame frame = new JFrame("???? ??ë§? ???¤í??");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-        // TheaterPanel ???? ë°? ì¶?ê°?
-        TheaterPanel theaterPanel = new TheaterPanel();
-        frame.getContentPane().add(theaterPanel);
-        
-        // JFrame ?¬ê¸° ë°? ??ì¹? ?¤ì?? ?? ë³´ì?´ë??ë¡? ??
-        frame.setSize(400, 200);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+   ;
         }
     }
 

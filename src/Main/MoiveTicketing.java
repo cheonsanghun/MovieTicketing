@@ -4,6 +4,8 @@
  */
 package Main;
 
+import Main.Home;
+
 /**
  *
  * @author Admin
@@ -14,7 +16,7 @@ public class MoiveTicketing {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        //¸ŞÀÎ¸Ş¼­µå
+        //ë©”ì¸ë©”ì„œë“œ
         new Home();
     }
     

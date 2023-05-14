@@ -21,25 +21,25 @@ import javax.swing.event.ListSelectionListener;
 
 public class TheaterPanel extends JPanel implements MovieFactory, ActionListener {
 
-    // ë°ì´í„°ë² ì´ìŠ¤ ì—°ê²° ì •ë³´
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/movie_db";
+    // ?°ì?´í?°ë??´ì?? ?°ê²° ??ë³?
+    private static final String DB_URL = "jdbc:mariadb://localhost:3306/test";
     private static final String DB_USER = "root";
-    private static final String DB_PASS = "ll8055001!";
+    private static final String DB_PASS = "12341234";
 
-    // ì½¤ë³´ë°•ìŠ¤ì—ì„œ ì„ íƒ ê°€ëŠ¥í•œ ê·¹ì¥ ì •ë³´ë¥¼ ê°€ì ¸ì˜¤ê¸° ìœ„í•œ ì¿¼ë¦¬
+    // ì½¤ë³´ë°??¤ì???? ???? ê°??¥í?? ê·¹ì?? ??ë³´ë?? ê°??¸ì?¤ê¸° ???? ì¿¼ë¦¬
     private static final String SELECT_THEATERS = "SELECT * FROM theater";
 
-    // ê·¹ì¥ ì„ íƒì„ ìœ„í•œ ë ˆì´ë¸”ê³¼ ì½¤ë³´ë°•ìŠ¤
+    // ê·¹ì?? ?????? ???? ???´ë?ê³? ì½¤ë³´ë°???
     private JLabel titleLabel;
     private JComboBox<String> theaterComboBox;
 
     public TheaterPanel() {
 
         
-        // ê·¹ì¥ ì„ íƒì„ ìœ„í•œ ë ˆì´ë¸” ìƒì„±
-        titleLabel = new JLabel("ì˜í™”ê´€ì„ ì„ íƒí•´ì£¼ì„¸ìš”:");
+        // ê·¹ì?? ?????? ???? ???´ë? ????
+        titleLabel = new JLabel("????ê´??? ?????´ì£¼?¸ì??:");
 
-        // ë°ì´í„°ë² ì´ìŠ¤ì—ì„œ ê·¹ì¥ ì •ë³´ë¥¼ ê°€ì ¸ì™€ì„œ ë¦¬ìŠ¤íŠ¸ì— ì¶”ê°€
+        // ?°ì?´í?°ë??´ì?¤ì???? ê·¹ì?? ??ë³´ë?? ê°??¸ì???? ë¦¬ì?¤í?¸ì?? ì¶?ê°?
         ArrayList<String> theaterNames = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
              Statement stmt = conn.createStatement();
@@ -52,30 +52,30 @@ public class TheaterPanel extends JPanel implements MovieFactory, ActionListener
         }
         String[] theaterArray = theaterNames.toArray(new String[theaterNames.size()]);
 
-        // ê·¹ì¥ ì„ íƒì„ ìœ„í•œ JList ìƒì„±
-        JList<String> theaterList = new JList<>(theaterArray);
+        // ê·¹ì?? ?????? ???? JList ????
+        final JList<String> theaterList = new JList<>(theaterArray);
         theaterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        // ê·¹ì¥ ì„ íƒ ë ˆì´ë¸”ê³¼ JListë¥¼ íŒ¨ë„ì— ì¶”ê°€
+        // ê·¹ì?? ???? ???´ë?ê³? JListë¥? ?¨ë???? ì¶?ê°?
         add(titleLabel);
         add(new JScrollPane(theaterList));
 
-        // ê·¹ì¥ ì„ íƒ JListì˜ ì•¡ì…˜ ë¦¬ìŠ¤ë„ˆ ë“±ë¡
+        // ê·¹ì?? ???? JList?? ?¡ì?? ë¦¬ì?¤ë?? ?±ë?
         theaterList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
             String selectedTheater = theaterList.getSelectedValue();
 
-            // ì„ íƒí•œ ê·¹ì¥ì„ ì´ìš©í•˜ì—¬ ì¥ë¥´ ì„ íƒ íŒ¨ë„ ìƒì„±
+            // ?????? ê·¹ì?¥ì?? ?´ì?©í???? ?¥ë¥´ ???? ?¨ë?? ????
             SelectedGenrePanel genrePanel = new SelectedGenrePanel(selectedTheater);
 
-            // ë¶€ëª¨ íŒ¨ë„ì— í˜„ì¬ ë³´ì—¬ì§€ê³  ìˆëŠ” íŒ¨ë„ì„ ì œê±°í•˜ê³ , ì¥ë¥´ ì„ íƒ íŒ¨ë„ì„ ì¶”ê°€í•¨
+            // ë¶?ëª? ?¨ë???? ???? ë³´ì?¬ì?ê³? ???? ?¨ë???? ??ê±°í??ê³?, ?¥ë¥´ ???? ?¨ë???? ì¶?ê°???
             Container parent = TheaterPanel.this.getParent();
             Component currentPanel = parent.getComponent(0);
             parent.remove(currentPanel);
             parent.add(genrePanel);
 
-            // ë³€ê²½ëœ íŒ¨ë„ êµ¬ì„±ì„ ë°˜ì˜
+            // ë³?ê²½ë?? ?¨ë?? êµ¬ì?±ì?? ë°???
             parent.revalidate();
             parent.repaint();
         }
@@ -88,10 +88,10 @@ public class TheaterPanel extends JPanel implements MovieFactory, ActionListener
         if (e.getSource() == theaterComboBox) {
             String selectedTheater = (String) theaterComboBox.getSelectedItem();
 
-            // ì„ íƒí•œ ê·¹ì¥ì„ ì´ìš©í•˜ì—¬ ì¥ë¥´ ì„ íƒ íŒ¨ë„ ìƒì„±
+            // ?????? ê·¹ì?¥ì?? ?´ì?©í???? ?¥ë¥´ ???? ?¨ë?? ????
             SelectedGenrePanel genrePanel = new SelectedGenrePanel(selectedTheater);
 
-            // ë¶€ëª¨ íŒ¨ë„ì— ì¥ë¥´ ì„ íƒ íŒ¨ë„ì„ ì¶”ê°€í•˜ê³ , ì¹´ë“œ ë ˆì´ì•„ì›ƒìœ¼ë¡œ ì „í™˜
+            // ë¶?ëª? ?¨ë???? ?¥ë¥´ ???? ?¨ë???? ì¶?ê°???ê³?, ì¹´ë?? ???´ì?????¼ë? ????
             this.getParent().add(genrePanel, "Genre");
             CardLayout cl = (CardLayout) this.getParent().getLayout();
             cl.show(this.getParent(), "Genre");

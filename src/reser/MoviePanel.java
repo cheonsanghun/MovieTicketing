@@ -25,15 +25,15 @@ import javax.swing.event.ListSelectionListener;
  */
 public abstract class MoviePanel extends JPanel implements MovieFactory {
 
-     String dbDriver = "com.mysql.jdbc.Driver";
-    String dbUrl = "jdbc:mysql://127.0.0.1:3306/movie_db";
+     String dbDriver = "org.mariadb.jdbc.Driver";
+    String dbUrl = "jdbc:mysql://localhost:3306/test";
     String dbUser = "root";
-    String dbPassword = "ll8055001!";    
+    String dbPassword = "12341234";    
     Connection dbconn = null;
     
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/movie_db";
+    private static final String DB_URL = "jdbc:mariadb://localhost:3306/movie_db";
     private static final String DB_USER = "root";
-    private static final String DB_PASS = "ll8055001!";
+    private static final String DB_PASS = "12341234";
 
     private static final String SELECT_MOVIES = "SELECT movie.title FROM movie JOIN theater ON movie.theater_id = theater.id WHERE theater.name = '%s';";
 
@@ -42,7 +42,7 @@ public abstract class MoviePanel extends JPanel implements MovieFactory {
     private DefaultListModel<String> movieModel;
 
     public MoviePanel(String theaterName) {
-        titleLabel = new JLabel("영화를 선택해주세요:");
+        titleLabel = new JLabel("????�? ?????�주?��??:");
         movieModel = new DefaultListModel<>();
         movieList = new JList<>(movieModel);
         movieList.setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);

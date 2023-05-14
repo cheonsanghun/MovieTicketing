@@ -31,15 +31,15 @@ import javax.swing.event.ListSelectionListener;
  * @author USER
  */
 public abstract class GenrePanel extends JPanel implements MovieFactory {
-    String dbDriver = "com.mysql.jdbc.Driver";
-    String dbUrl = "jdbc:mysql://127.0.0.1:3306/movie_db";
+    String dbDriver = "org.mariadb.jdbc.Driver";
+    String dbUrl = "jdbc:mariadb://localhost:3306/test";
     String dbUser = "root";
-    String dbPassword = "ll8055001!";
+    String dbPassword = "12341234";
     Connection dbconn = null;
     
-    private static final String DB_URL = "jdbc:mysql://localhost:3306/movie_db";
+    private static final String DB_URL = "jdbc:mariadb://localhost:3306/test";
     private static final String DB_USER = "root";
-    private static final String DB_PASS = "ll8055001!";
+    private static final String DB_PASS = "12341234";
 
     private static final String SELECT_GENRES = "SELECT DISTINCT genre.g_name FROM movie INNER JOIN genre ON movie.g_id = genre.g_id INNER JOIN theater ON movie.t_id = theater.t_id WHERE theater.t_name = '%s'";
 
@@ -51,7 +51,7 @@ public abstract class GenrePanel extends JPanel implements MovieFactory {
     public GenrePanel(String theaterName) {
         
         
-        titleLabel = new JLabel("장르를 선택해주세요:");
+        titleLabel = new JLabel("?�르�? ?????�주?��??:");
          ArrayList<String> genreNames = new ArrayList<>();
         //genreModel = new DefaultListModel<>();
         //genreList = new JList<>(genreModel);
@@ -71,8 +71,8 @@ public abstract class GenrePanel extends JPanel implements MovieFactory {
         
         String[] theaterArray = genreNames.toArray(new String[genreNames.size()]);
         
-         // 극장 선택을 위한 JList 생성
-        JList<String> genreList = new JList<>(theaterArray);
+         // 극�?? ?????? ???? JList ????
+        final JList<String> genreList = new JList<>(theaterArray);
         genreList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
         genreList.addListSelectionListener(new ListSelectionListener() {
@@ -81,13 +81,13 @@ public abstract class GenrePanel extends JPanel implements MovieFactory {
                     String selectedGenre = (String) genreList.getSelectedValue();
                     SelectedGenrePanel genrePanel = new SelectedGenrePanel(selectedGenre);
 
-                    // 부모 패널에 현재 보여지고 있는 패널을 제거하고, 장르 선택 패널을 추가함
+                    // �?�? ?��???? ???? 보�?��?�? ???? ?��???? ??거�??�?, ?�르 ???? ?��???? �?�???
             Container parent = GenrePanel.this.getParent();
             Component currentPanel = parent.getComponent(0);
             parent.remove(currentPanel);
             parent.add(genrePanel);
 
-            // 변경된 패널 구성을 반영
+            // �?경�?? ?��?? 구�?��?? �???
             parent.revalidate();
             parent.repaint();
                 }
@@ -102,10 +102,10 @@ public abstract class GenrePanel extends JPanel implements MovieFactory {
         if (e.getSource() == genreList) {
             String genreName = (String) genreList.getSelectedValue();
 
-            // 선택한 극장을 이용하여 장르 선택 패널 생성
+            // ?????? 극�?��?? ?��?��???? ?�르 ???? ?��?? ????
             SelectedMoviePanel moviePanel = new SelectedMoviePanel(genreName);
 
-            // 부모 패널에 장르 선택 패널을 추가하고, 카드 레이아웃으로 전환
+            // �?�? ?��???? ?�르 ???? ?��???? �?�???�?, 카�?? ???��?????��? ????
             this.getParent().add(moviePanel, "Movie");
             CardLayout cl = (CardLayout) this.getParent().getLayout();
             cl.show(this.getParent(), "Movie");

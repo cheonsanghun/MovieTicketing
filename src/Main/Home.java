@@ -73,7 +73,7 @@ public class Home extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 ManagerLogin managerlogin = new ManagerLogin();
-                
+                setVisible(false);
             }
         });
 
