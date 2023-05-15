@@ -1,6 +1,7 @@
-package Login;
+package View;
 
-import LoginDto.LoginDto;
+import Model.LoginDto;
+import Model.LoginDto;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -17,8 +18,9 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import Main.Home;
-import Membership.Membership;
+import View.Home;
+import View.Membership;
+import View.Pw_Search;
 import reser.TheaterPanel;
 
 public class LoginFrame extends JFrame {
@@ -28,7 +30,7 @@ public class LoginFrame extends JFrame {
     PreparedStatement stmt;
     ResultSet rs;
 
-    JButton b1, b2;
+    JButton b1, b2, b3;
     JLabel l1, l2;
     JTextField id, pw;
     JPanel p;
@@ -54,8 +56,8 @@ public class LoginFrame extends JFrame {
         
         // JFrame ?¬ê¸° ë°? ??ì¹? ?¤ì?? ?? ë³´ì?´ë??ë¡? ??
         frame.setSize(800, 500);
-        frame.setLocationRelativeTo(null);
         setVisible(false);
+        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         }
     }
@@ -64,7 +66,8 @@ public class LoginFrame extends JFrame {
 
         @Override
         public void execute() {
-   ;
+            JOptionPane.showMessageDialog(null, "¾ÆÀÌµð ¶Ç´Â ºñ¹Ð¹øÈ£°¡ Æ²·È½À´Ï´Ù", "·Î±×ÀÎ ½ÇÆÐ", 1);
+   
         }
     }
 
@@ -187,7 +190,19 @@ public class LoginFrame extends JFrame {
           
             }
         });
-
+         b3 = new JButton("ºñ¹Ð¹øÈ£ Ã£±â");
+        b3.setBackground(Color.white);
+        b3.setBounds(500, 340, 150, 30);
+        b3.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
+           b3.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+          
+                  
+                new Pw_Search();
+          
+            }
+        });
         l1 = new JLabel("¾ÆÀÌµð : ");
         l1.setBackground(Color.white);
         l1.setFont(new Font("¸¼Àº °íµñ", Font.BOLD, 14));
@@ -223,6 +238,7 @@ public class LoginFrame extends JFrame {
         p.add(b1);
         p.add(b2);
        p.add(back);
+       p.add(b3);
         add(p);
     }
 }

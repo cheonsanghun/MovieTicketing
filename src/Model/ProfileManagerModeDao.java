@@ -1,4 +1,4 @@
-package ManagerModeDao;
+package Model;
 
 
 import java.sql.Connection;
@@ -8,7 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import DbConnect.DbConnect;
-import LoginDto.LoginDto;
 public class ProfileManagerModeDao {
 
     //데이터 삽입 메서드

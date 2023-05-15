@@ -2,9 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Membership;
+package View;
 
-import ManagerModeDao.ProfileManagerModeDao;
+import Model.ProfileManagerModeDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import LoginDto.LoginDto;
+import Model.LoginDto;
 import java.awt.Color;
 public class Membership extends JFrame implements ActionListener {
 
