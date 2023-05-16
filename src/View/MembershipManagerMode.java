@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.ManagerMode_Controller;
 import Model.ProfileManagerModeDao;
 import java.awt.Color;
 import java.awt.Font;
@@ -166,7 +167,17 @@ public class MembershipManagerMode extends JFrame implements ActionListener, Pro
 
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("add")) {
-                    addAction();
+                     dft.setRowCount(0);
+                       showMembers();
+                       String name = t1.getText();
+        String age = t2.getText();
+        String id = t3.getText();
+        String pw = t4.getText();
+        String phone = t5.getText();
+        String mail = t6.getText();
+        String address = t7.getText();
+        ManagerMode_Controller mc = new ManagerMode_Controller();
+                    mc.addAction(name, age, id, pw, phone, mail, address);
                 }
             }
         });
@@ -228,41 +239,6 @@ public class MembershipManagerMode extends JFrame implements ActionListener, Pro
             Object[] row = {tmp.getName(), tmp.getAge(), tmp.getId(), tmp.getPw(), tmp.getPhone(), tmp.getMail(), tmp.getAddress()};
             dft.addRow(row);
         }
-    }
-
-    // 추가하기 메서드
-    private void addAction() {
-        //1. 입력한 이름과 주소를 읽어온다.
-        String name = t1.getText();
-        String age = t2.getText();
-        String id = t3.getText();
-        String pw = t4.getText();
-        String phone = t5.getText();
-        String mail = t6.getText();
-        String address = t7.getText();
-        //2. DB 에 저장한다.
-        LoginDto dto = new LoginDto.Builder()
-                .setName(name)
-                .setAge(age)
-                .setId(id)
-                .setPw(pw)
-                .setPhone(phone)
-                .setMail(mail)
-                .setAddress(address)
-                .build();
-        //작업의 성공여부를 리턴 받는다. 
-        boolean isSuccess = new ProfileManagerModeDao().insert(dto);
-
-        if (isSuccess) {
-            JOptionPane.showMessageDialog(this, "저장 했습니다.");
-            //행의 갯수를 강제로 0 로 만들고 
-            dft.setRowCount(0);
-            //다시 출력하기
-            showMembers();
-        } else {
-            JOptionPane.showMessageDialog(this, "저장 실패! 중복된 아이디가 있습니다.");
-        }
-
     }
 
     //삭제 메서드

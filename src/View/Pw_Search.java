@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.Pw_Search_Controller;
 import Model.LoginDto;
 import Model.ProfileManagerModeDao;
 import java.awt.Color;
@@ -29,7 +30,7 @@ public class Pw_Search extends JFrame  implements ActionListener {
     JTextField id, name;
     JButton b1, b2;
     boolean isSuccess;
-
+     
     public Pw_Search() {
         p = new JPanel();
         p.setLayout(null);
@@ -91,28 +92,14 @@ public class Pw_Search extends JFrame  implements ActionListener {
 
     public void actionPerformed(ActionEvent e) { // 버튼 클릭시에 발동되는 메소드
         if (e.getActionCommand().equals("add")) {
-            addAction();
+         
+             Pw_Search_Controller psc =  new Pw_Search_Controller();
+             String uid=id.getText();
+             String uname=name.getText();
+            psc.addAction(uid,uname);
         }
     }
 
-    private void addAction() {
-        String uid = id.getText();
-        String uname = name.getText();
-        LoginDto dto = new LoginDto.Builder()
-                .setName(uname)
-                .setId(uid)
-                .build();
-        PwSearchDao psd = new PwSearchDao();
-        String value = psd.findpw(uid, uname);
+ 
 
-        if (value.equals("errorinformation")) {
-            JOptionPane.showMessageDialog(null, "일치하는 정보가 없습니다. 다시 시도해주세요");
-        } else {
-            JOptionPane.showMessageDialog(null, "회원님의 비밀번호는" + value + "입니다.");
-        }
-    }
-
-    public static void main(String[] args) {
-        new Pw_Search();
-    }
 }
