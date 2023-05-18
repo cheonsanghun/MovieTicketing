@@ -3,12 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing1/src/LoginDto/LoginDto.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing1/src/ManagerMode/ManagerMode.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing1/src/PwSearchDao/PwSearchDao.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing1/src/PwSearch/Pw_Search.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing1/src/Main/MoiveTicketing.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing1/src/Login/LoginFrame.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/PwSearchDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/MovieReserveDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/Pw_Search.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/MoiveTicketing.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/NoticeBoardDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/ProfileManagerModeDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/LoginDto.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/DbConnect/DbConnect.java</file>
         </group>
     </open-files>
 </project-private>

@@ -35,7 +35,7 @@ public class ManagerLogin extends JFrame {
         setLocationRelativeTo(null); // 화면 가운데 배치
         setTitle("관리자 로그인 화면");
         setVisible(true);
-
+        
         j = new JPanel();
         j.setBackground(Color.white);
         j.setLayout(null);

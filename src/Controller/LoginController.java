@@ -8,8 +8,9 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import reser.TheaterPanel;
+import Model.Factory.TheaterPanel;
 import DbConnect.DbConnect;
+import View.LoginSuccess;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ import java.sql.ResultSet;
  *
  * @author kjbg4
  */
-public class Login_Controller {
+public class LoginController {
     
     private Connection conn;
     PreparedStatement stmt = null;
@@ -35,18 +36,7 @@ public class Login_Controller {
         @Override
         public void execute() {
             JOptionPane.showMessageDialog(null, "·Î±×ÀÎ ¼º°ø !", "·Î±×ÀÎ È®ÀÎ!", JOptionPane.DEFAULT_OPTION);
-            JFrame frame = new JFrame("¿µÈ­ ¿¹¸Å ½Ã½ºÅÛ");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-            // TheaterPanel ???? ë°? ì¶?ê°?
-            TheaterPanel theaterPanel = new TheaterPanel();
-            frame.getContentPane().add(theaterPanel);
-
-            // JFrame ?¬ê¸° ë°? ??ì¹? ?¤ì?? ?? ë³´ì?´ë??ë¡? ??
-            frame.setSize(800, 500);
-            frame.setVisible(false);
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
+              new LoginSuccess();
         }
     }
 
@@ -78,7 +68,7 @@ public class Login_Controller {
         private State loginSuccessState = new LoginSuccessState();
         private State loginFailureState = new LoginFailureState();
 
-        private State state;
+        public State state;
         private String uid;
         private String upw;
 

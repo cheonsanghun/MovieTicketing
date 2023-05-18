@@ -4,8 +4,8 @@
  */
 package View;
 
-import Controller.Pw_Search_Controller;
-import Model.LoginDto;
+import Controller.Pw_SearchController;
+import Controller.LoginDto;
 import Model.ProfileManagerModeDao;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
@@ -93,7 +93,7 @@ public class Pw_Search extends JFrame  implements ActionListener {
     public void actionPerformed(ActionEvent e) { // 버튼 클릭시에 발동되는 메소드
         if (e.getActionCommand().equals("add")) {
          
-             Pw_Search_Controller psc =  new Pw_Search_Controller();
+             Pw_SearchController psc =  new Pw_SearchController();
              String uid=id.getText();
              String uname=name.getText();
             psc.addAction(uid,uname);

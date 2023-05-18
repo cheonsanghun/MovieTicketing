@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package reser;
+package Model.Factory;
 
 import java.awt.CardLayout;
 import java.awt.Component;
@@ -17,6 +17,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import javax.swing.DefaultListModel;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -47,47 +48,65 @@ public abstract class GenrePanel extends JPanel implements MovieFactory {
     private JList<String> genreList;
     private JComboBox<String> genreComboBox;
     private DefaultListModel<String> genreModel;
-
+    String theater;
+    
     public GenrePanel(String theaterName) {
+        theater = theaterName;
         
-        
-        titleLabel = new JLabel("?¥ë¥´ë¥? ?????´ì£¼?¸ì??:");
+        titleLabel = new JLabel("Àå¸£¸¦ ¼±ÅÃÇÏ¼¼¿ä:");
          ArrayList<String> genreNames = new ArrayList<>();
-        //genreModel = new DefaultListModel<>();
-        //genreList = new JList<>(genreModel);
+        genreModel = new DefaultListModel<>();
+        genreList = new JList<>(genreModel);
         //JScrollPane scrollPane = new JScrollPane(genreList);
 
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
              Statement stmt = conn.createStatement();
-                ResultSet rs = stmt.executeQuery(String.format(SELECT_GENRES, theaterName))) {
+                ResultSet rs = stmt.executeQuery(String.format(SELECT_GENRES, theater))) {
             while (rs.next()) {
-                //String genreName  = rs.getString("g_name");
-                //genreModel.addElement(genreName);
+                String genreName  = rs.getString("g_name");
+                genreModel.addElement(genreName);
                 genreNames.add(rs.getString("g_name"));
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
         
-        String[] theaterArray = genreNames.toArray(new String[genreNames.size()]);
         
-         // ê·¹ì?? ?????? ???? JList ????
-        final JList<String> genreList = new JList<>(theaterArray);
+        JButton backButton = new JButton("µÚ·Î °¡±â");
+        backButton.setBounds(20, 320, 100, 30);
+        backButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                Container parent = GenrePanel.this.getParent();
+                Component currentPanel = parent.getComponent(0);
+                parent.remove(currentPanel);
+                parent.add(new TheaterPanel() {
+                    @Override
+                    public PayPanel creatPayPanel() {
+                        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+                    }
+                });
+                parent.revalidate();
+                parent.repaint();
+            }
+        });
+        add(backButton);
+        
         genreList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         
         genreList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     String selectedGenre = (String) genreList.getSelectedValue();
-                    SelectedGenrePanel genrePanel = new SelectedGenrePanel(selectedGenre);
+                    String selectedTheater = theater;
+                    SelectedMoviePanel moviePanel = new SelectedMoviePanel(theater,selectedGenre);
 
-                    // ë¶?ëª? ?¨ë???? ???? ë³´ì?¬ì?ê³? ???? ?¨ë???? ??ê±°í??ê³?, ?¥ë¥´ ???? ?¨ë???? ì¶?ê°???
+
             Container parent = GenrePanel.this.getParent();
             Component currentPanel = parent.getComponent(0);
             parent.remove(currentPanel);
-            parent.add(genrePanel);
+            parent.add(moviePanel);
 
-            // ë³?ê²½ë?? ?¨ë?? êµ¬ì?±ì?? ë°???
+
             parent.revalidate();
             parent.repaint();
                 }
@@ -100,16 +119,35 @@ public abstract class GenrePanel extends JPanel implements MovieFactory {
     }
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == genreList) {
-            String genreName = (String) genreList.getSelectedValue();
-
-            // ?????? ê·¹ì?¥ì?? ?´ì?©í???? ?¥ë¥´ ???? ?¨ë?? ????
-            SelectedMoviePanel moviePanel = new SelectedMoviePanel(genreName);
-
-            // ë¶?ëª? ?¨ë???? ?¥ë¥´ ???? ?¨ë???? ì¶?ê°???ê³?, ì¹´ë?? ???´ì?????¼ë? ????
+            String selectedGenre = (String) genreList.getSelectedValue();
+            String selectedTheater = theater;
+            SelectedMoviePanel moviePanel = new SelectedMoviePanel(theater,selectedGenre);
+            //SelectedMoviePanel moviePanel = new SelectedMoviePanel(selectedGenre);
             this.getParent().add(moviePanel, "Movie");
-            CardLayout cl = (CardLayout) this.getParent().getLayout();
-            cl.show(this.getParent(), "Movie");
+            CardLayout c2 = (CardLayout) this.getParent().getLayout();
+            c2.show(this.getParent(), "Movie");
+            
+
         }
     }
 
+    @Override
+    public TheaterPanel createTheaterPanel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public GenrePanel createGenrePanel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public MoviePanel createMoviePanel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public SeatPanel creatSeatPanel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 }

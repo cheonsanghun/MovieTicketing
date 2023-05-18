@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Main.java to edit this template
  */
-package reser;
+package Model.Factory;
 
 //import reser.TheaterPanel;
 //import reser.GenrePanel;
@@ -21,7 +21,7 @@ public class Reser {
 
     public static void main(String[] args) {
       // JFrame ????
-        JFrame frame = new JFrame("???? ??Îß? ???§Ì??");
+        JFrame frame = new JFrame("øµ»≠ øπ∏≈ Ω√Ω∫≈€");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
         // TheaterPanel ???? Î∞? Ï∂?Í∞?

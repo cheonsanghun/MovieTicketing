@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package reser;
+package Model.Factory;
 
 /**
  *
@@ -21,25 +21,26 @@ import javax.swing.event.ListSelectionListener;
 
 public class TheaterPanel extends JPanel implements MovieFactory, ActionListener {
 
-    // ?°ì?´í?°ë??´ì?? ?°ê²° ??ë³?
+
     private static final String DB_URL = "jdbc:mariadb://localhost:3306/test";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "12341234";
 
-    // ì½¤ë³´ë°??¤ì???? ???? ê°??¥í?? ê·¹ì?? ??ë³´ë?? ê°??¸ì?¤ê¸° ???? ì¿¼ë¦¬
+
     private static final String SELECT_THEATERS = "SELECT * FROM theater";
 
-    // ê·¹ì?? ?????? ???? ???´ë?ê³? ì½¤ë³´ë°???
+
     private JLabel titleLabel;
     private JComboBox<String> theaterComboBox;
+    private JList<String> theaterList;
 
     public TheaterPanel() {
 
         
-        // ê·¹ì?? ?????? ???? ???´ë? ????
-        titleLabel = new JLabel("????ê´??? ?????´ì£¼?¸ì??:");
 
-        // ?°ì?´í?°ë??´ì?¤ì???? ê·¹ì?? ??ë³´ë?? ê°??¸ì???? ë¦¬ì?¤í?¸ì?? ì¶?ê°?
+        titleLabel = new JLabel("±ØÀåÀ» ¼±ÅÃÇÏ¼¼¿ä:");
+
+
         ArrayList<String> theaterNames = new ArrayList<>();
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
              Statement stmt = conn.createStatement();
@@ -52,30 +53,30 @@ public class TheaterPanel extends JPanel implements MovieFactory, ActionListener
         }
         String[] theaterArray = theaterNames.toArray(new String[theaterNames.size()]);
 
-        // ê·¹ì?? ?????? ???? JList ????
-        final JList<String> theaterList = new JList<>(theaterArray);
+
+        theaterList = new JList<>(theaterArray);
         theaterList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
-        // ê·¹ì?? ???? ???´ë?ê³? JListë¥? ?¨ë???? ì¶?ê°?
+
         add(titleLabel);
         add(new JScrollPane(theaterList));
 
-        // ê·¹ì?? ???? JList?? ?¡ì?? ë¦¬ì?¤ë?? ?±ë?
+
         theaterList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
             String selectedTheater = theaterList.getSelectedValue();
 
-            // ?????? ê·¹ì?¥ì?? ?´ì?©í???? ?¥ë¥´ ???? ?¨ë?? ????
+
             SelectedGenrePanel genrePanel = new SelectedGenrePanel(selectedTheater);
 
-            // ë¶?ëª? ?¨ë???? ???? ë³´ì?¬ì?ê³? ???? ?¨ë???? ??ê±°í??ê³?, ?¥ë¥´ ???? ?¨ë???? ì¶?ê°???
+
             Container parent = TheaterPanel.this.getParent();
             Component currentPanel = parent.getComponent(0);
             parent.remove(currentPanel);
             parent.add(genrePanel);
 
-            // ë³?ê²½ë?? ?¨ë?? êµ¬ì?±ì?? ë°???
+
             parent.revalidate();
             parent.repaint();
         }
@@ -85,13 +86,11 @@ public class TheaterPanel extends JPanel implements MovieFactory, ActionListener
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if (e.getSource() == theaterComboBox) {
-            String selectedTheater = (String) theaterComboBox.getSelectedItem();
+        if (e.getSource() == theaterList) {
+            String selectedTheater = (String) theaterList.getSelectedValue();
 
-            // ?????? ê·¹ì?¥ì?? ?´ì?©í???? ?¥ë¥´ ???? ?¨ë?? ????
             SelectedGenrePanel genrePanel = new SelectedGenrePanel(selectedTheater);
 
-            // ë¶?ëª? ?¨ë???? ?¥ë¥´ ???? ?¨ë???? ì¶?ê°???ê³?, ì¹´ë?? ???´ì?????¼ë? ????
             this.getParent().add(genrePanel, "Genre");
             CardLayout cl = (CardLayout) this.getParent().getLayout();
             cl.show(this.getParent(), "Genre");
@@ -110,6 +109,16 @@ public class TheaterPanel extends JPanel implements MovieFactory, ActionListener
 
     @Override
     public MoviePanel createMoviePanel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public SeatPanel creatSeatPanel() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public PayPanel creatPayPanel() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

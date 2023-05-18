@@ -4,9 +4,9 @@
  */
 package Controller;
 
-import Model.LoginDto;
 import Model.PwSearchDao;
 import View.Pw_Search;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
@@ -14,7 +14,7 @@ import javax.swing.JTextField;
  *
  * @author kjbg4
  */
-public class Pw_Search_Controller {
+public class Pw_SearchController {
     
        public void addAction(String uid, String uname) {
            Pw_Search ps = new Pw_Search();
@@ -30,6 +30,7 @@ public class Pw_Search_Controller {
             JOptionPane.showMessageDialog(null, "일치하는 정보가 없습니다. 다시 시도해주세요");
         } else {
             JOptionPane.showMessageDialog(null, "회원님의 비밀번호는" + value + "입니다.");
+            
         }
     }
 }

@@ -20,7 +20,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import Model.LoginDto;
+import Controller.LoginDto;
 import java.awt.Color;
 public class Membership extends JFrame implements ActionListener {
 

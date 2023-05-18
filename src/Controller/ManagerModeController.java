@@ -4,7 +4,6 @@
  */
 package Controller;
 
-import Model.LoginDto;
 import Model.ProfileManagerModeDao;
 import java.beans.PropertyChangeEvent;
 import java.util.List;
@@ -16,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author kjbg4
  */
-public class ManagerMode_Controller {
+public class ManagerModeController {
 
     DefaultTableModel dft;
     JTable table;

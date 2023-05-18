@@ -57,7 +57,7 @@ public class ManagerMode extends JFrame {
       
             public void actionPerformed(ActionEvent e) { 
                  setVisible(false);
-               new MovieReserveManagerMode();
+               new MovieManagerMode();
             }
         });
              

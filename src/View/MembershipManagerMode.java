@@ -4,7 +4,7 @@
  */
 package View;
 
-import Controller.ManagerMode_Controller;
+import Controller.ManagerModeController;
 import Model.ProfileManagerModeDao;
 import java.awt.Color;
 import java.awt.Font;
@@ -22,7 +22,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
-import Model.LoginDto;
+import Controller.LoginDto;
 import Controller.MyMouseListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -36,7 +36,7 @@ public class MembershipManagerMode extends JFrame implements ActionListener, Pro
     JLabel mainname, l1, l2, l3, l4, l5, l6, l7;
     JTextField t1, t2, t3, t4, t5, t6, t7;
     List<LoginDto> companys;
-
+ 
     MembershipManagerMode() {
         //관리자화면 프레임 gui 
         p = new JPanel();
@@ -176,7 +176,7 @@ public class MembershipManagerMode extends JFrame implements ActionListener, Pro
         String phone = t5.getText();
         String mail = t6.getText();
         String address = t7.getText();
-        ManagerMode_Controller mc = new ManagerMode_Controller();
+        ManagerModeController mc = new ManagerModeController();
                     mc.addAction(name, age, id, pw, phone, mail, address);
                 }
             }
