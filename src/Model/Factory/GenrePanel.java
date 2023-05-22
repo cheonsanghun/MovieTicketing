@@ -33,7 +33,7 @@ import javax.swing.event.ListSelectionListener;
  */
 public abstract class GenrePanel extends JPanel implements MovieFactory {
     String dbDriver = "org.mariadb.jdbc.Driver";
-    String dbUrl = "jdbc:mariadb://localhost:3306/test";
+    String dbUrl = "jdbc:mariadb://127.0.0.1:3306/test";
     String dbUser = "root";
     String dbPassword = "12341234";
     Connection dbconn = null;
@@ -57,8 +57,10 @@ public abstract class GenrePanel extends JPanel implements MovieFactory {
          ArrayList<String> genreNames = new ArrayList<>();
         genreModel = new DefaultListModel<>();
         genreList = new JList<>(genreModel);
+        genreList.setLayout(null);
+        genreList.setBounds(100,150,250,250);
         //JScrollPane scrollPane = new JScrollPane(genreList);
-
+        
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
              Statement stmt = conn.createStatement();
                 ResultSet rs = stmt.executeQuery(String.format(SELECT_GENRES, theater))) {
@@ -73,7 +75,8 @@ public abstract class GenrePanel extends JPanel implements MovieFactory {
         
         
         JButton backButton = new JButton("뒤로 가기");
-        backButton.setBounds(20, 320, 100, 30);
+        backButton.setBounds(300, 200, 100, 30);
+        backButton.setLayout(null);
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Container parent = GenrePanel.this.getParent();

@@ -6,6 +6,9 @@ package View;
 
 import Controller.LoginDto;
 import Controller.ManagerModeController;
+import Controller.MovieGenreController;
+import Controller.MovieGenreDto;
+import Model.MovieGenreDao;
 import Model.ProfileManagerModeDao;
 import java.awt.Color;
 import java.awt.Font;
@@ -29,11 +32,11 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author kjbg4
  */
-public class MovieManagerMode extends JFrame {
+public class MovieManagerMode extends JFrame implements ActionListener, PropertyChangeListener {
 
     JPanel p;
     JButton insert, delete, back;
-    List<LoginDto> companys;
+    List<MovieGenreDto> companys;
     DefaultTableModel dft;
     JTable table;
     JLabel label1, label2;
@@ -85,15 +88,13 @@ public class MovieManagerMode extends JFrame {
         p.add(insert);
         p.add(delete);
         add(p);
-
-       
         String[] colNames = {"장르", "영화 이름"};
         // 테이블에 출력할 데이터를 가지고있는 디폴트모델테이블
         dft = new DefaultTableModel(colNames, 0) {
             //수정 가능 여부를 리턴하는 메소드
             public boolean isCellEditable(int row, int column) {
                 //0번 칼럼만 수정 불가능하도록 false를 리턴해주고
-                if (column == 0 || column == 3) {
+                if (column == 0 || column == 1) {
                     return false;
                 } else {
                     //나머지는 모두 수정 가능하도록 true를 리턴한다.
@@ -102,13 +103,22 @@ public class MovieManagerMode extends JFrame {
 
             }
         };
-
         table = new JTable(dft);
         // 스크롤 생성
         JScrollPane pane = new JScrollPane(table);
 
         pane.setBounds(185, 140, 400, 300);
         p.add(pane);
+        table.addPropertyChangeListener(this);
+        //테이블에 회원목록 추가하기
+        showMembers();
+
+        insert.addActionListener(this);
+        delete.addActionListener(this);
+
+        insert.setActionCommand("add");
+        delete.setActionCommand("delete");
+
         // 테이블 셀에 수정작업이 일어났는지 감시할 리스너 등록
         setVisible(true);
 
@@ -119,6 +129,93 @@ public class MovieManagerMode extends JFrame {
                 setVisible(false);
             }
         });
+        insert.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("add")) {
+                    dft.setRowCount(0);
+                    showMembers();
+                    String g_name = genre.getText();
+                    String m_name = movie.getText();
+
+                    MovieGenreController mc = new MovieGenreController();
+                    mc.addAction(m_name, g_name);
+                }
+            }
+        });
+
+        delete.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("delete")) {
+                    deleteAction();
+                }
+
+            }
+        });
     }
 
+    public void propertyChange(PropertyChangeEvent evt) {
+        System.out.println("propertyChange()");
+        System.out.println(evt.getPropertyName());
+        if (evt.getPropertyName().equals("tableCellEditor")) {
+            //선택된 row 의 index 를 얻어와서 
+            int index = table.getSelectedRow();
+            //인덱스에 해당하는 model 에서 입력된 이름과 주소를 읽어온다. 
+            String movie = (String) dft.getValueAt(index, 0); //2번째 인덱스의 주소를 읽어옴
+            String genre = (String) dft.getValueAt(index, 1); //1번째 인덱스의 이름을 읽어옴
+
+            //빌더 패턴 
+            MovieGenreDto dto = new MovieGenreDto.Builder()
+                    .setMovie(movie)
+                    .setGenre(genre)
+                    .build();
+
+        }
+    }
+
+    //회원목록 전체 출력
+    public void showMembers() {
+        companys = new MovieGenreDao().getList();
+        for (MovieGenreDto tmp : companys) {
+            Object[] row = {tmp.getGenre(), tmp.getMovie(),};
+            dft.addRow(row);
+        }
+    }
+
+    //삭제 메서드
+    private void deleteAction() {
+        //선택된 row 의 인덱스를 얻어와서 
+        int index = table.getSelectedRow();
+        if (index < 0) {
+            JOptionPane.showMessageDialog(this, "삭제할 행을 선택해 주세요.");
+        }
+        if (index == -1) {
+            return;
+        }
+
+        //DB 에서 삭제하고
+        MovieGenreDto dto = new MovieGenreDto();
+        dto.setGenre(companys.get(index).getGenre());
+        dto.setMovie(companys.get(index).getMovie());
+        new MovieGenreDao().delete(dto);
+        //다시 출력
+        dft.setRowCount(0);
+        showMembers();
+
+        //작업의 성공여부를 리턴 받는다. 
+        boolean isSuccess = new MovieGenreDao().delete(dto);
+
+        if (isSuccess) {
+            JOptionPane.showMessageDialog(this, "삭제 했습니다.");
+        } else {
+            JOptionPane.showMessageDialog(this, "저장 했습니다.");
+        }
+
+    }
+    
+    public void actionPerformed(ActionEvent e) {
+
+    }
+    
 }

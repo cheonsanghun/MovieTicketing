@@ -65,13 +65,9 @@ public class ManagerMode extends JFrame {
       
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                
+                new NoticeBoardManagerMode();
             }
         });
     }
-   
-    
-    public static void main(String[] args) {
-        new ManagerMode();
-    }
+
 }

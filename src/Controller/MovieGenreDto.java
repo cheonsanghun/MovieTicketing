@@ -32,7 +32,13 @@ public class MovieGenreDto {
     public MovieGenreDto() {
         super();
     }
-                        //∫Ù¥ı ∆–≈œ
+       public void setGenre(String genre){
+        this.genre=genre;
+    }
+          public void setMovie(String movie){
+        this.movie=movie;
+    }
+                    //∫Ù¥ı ∆–≈œ
     private MovieGenreDto(Builder builder) {
         super();
         this.movie = builder.movie;

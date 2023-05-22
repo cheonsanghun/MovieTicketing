@@ -17,60 +17,70 @@ import Model.Factory.TheaterPanel;
  * @author Admin
  */
 public class LoginSuccess extends JFrame {
+
     JPanel j;
-    JButton movie, noticeboard;
-    
-    public LoginSuccess(){
-           j = new JPanel();
-          j.setLayout(null);  
-          j.setBackground(Color.white);
+    JButton movie, noticeboard, back;
+    Home home;
+    public LoginSuccess() {
+        j = new JPanel();
+        j.setLayout(null);
+        j.setBackground(Color.white);
         setSize(600, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // ??硫? 媛??대?? 諛곗?
         setTitle("선택 화면");
-        
+
         movie = new JButton("영화 예매");
         movie.setLayout(null);
-         movie.setBackground(Color.white);
-        movie.setBounds(110,150,150,50);
+        movie.setBackground(Color.white);
+        movie.setBounds(110, 150, 150, 50);
         
-         noticeboard = new JButton("게시판 이동");
+         back = new JButton("뒤로 가기");
+        back.setLayout(null);
+        back.setBackground(Color.white);
+        back.setBounds(484, 331, 100, 30);
+        
+        noticeboard = new JButton("게시판 이동");
         noticeboard.setLayout(null);
-         noticeboard.setBackground(Color.white);
-        noticeboard.setBounds(315,150,150,50);
+        noticeboard.setBackground(Color.white);
+        noticeboard.setBounds(315, 150, 150, 50);
         
-        
+        j.add(back);
         j.add(movie);
         j.add(noticeboard);
         add(j);
         setVisible(true);
-        
-            noticeboard.addActionListener(new ActionListener() {
+
+        noticeboard.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 new NoticeBoard();
             }
         });
-                     movie.addActionListener(new ActionListener() {
+        movie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 JFrame frame = new JFrame("영화 예매 시스템");
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        
-            // TheaterPanel 생성 및 추가
-            TheaterPanel theaterPanel = new TheaterPanel();
-            frame.getContentPane().add(theaterPanel);
-        
-            // JFrame 크기 및 위치 설정 후 보이도록 함
-            frame.setSize(500, 400);
-            frame.setLocationRelativeTo(null);
-            frame.setVisible(true);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+                // TheaterPanel 생성 및 추가
+                TheaterPanel theaterPanel = new TheaterPanel();
+                frame.getContentPane().add(theaterPanel);
+
+                // JFrame 크기 및 위치 설정 후 보이도록 함
+                frame.setSize(800, 500);
+                frame.setBackground(Color.white);
+                frame.setLocationRelativeTo(null);
+                frame.setVisible(true);
+            }
+        });
+         back.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+               setVisible(false);
             }
         });
     }
-    
-    
-        
 }

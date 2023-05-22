@@ -3,14 +3,48 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/PwSearchDao.java</file>
-            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/MovieReserveDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/Membership.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/MovieGenreController.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/LoginController.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/SeatPanel.java</file>
             <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/Pw_Search.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/PayPanel.java</file>
             <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/MoiveTicketing.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/MovieFactory.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/SelectedMoviePanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/Reser.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/observer/Observer.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/GenrePanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/LoginSuccess.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/SelectedPayPanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/PwSearchDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/MainPng/main.png</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/ManagerMode.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/NoticeBoard.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/NoticeBoardManagerMode.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/MovieManagerMode.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/TheaterPanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/MovieGenreDto.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/MyMouseListener.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/State.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/observer/Reviewdata.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/DbConnect/DbConnect.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/MembershipManagerMode.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/NoticeBoardController.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/Home.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/ManagerModeController.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/observer/Reviewobserver.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/SelectedGenrePanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/Pw_SearchController.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/observer/Subject.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Controller/LoginDto.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/SelectedSeatPanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/LoginFrame.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/Factory/MoviePanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/View/ManagerLogin.java</file>
             <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/NoticeBoardDao.java</file>
             <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/ProfileManagerModeDao.java</file>
-            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/LoginDto.java</file>
-            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/DbConnect/DbConnect.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing/src/Model/MovieDao.java</file>
         </group>
     </open-files>
 </project-private>

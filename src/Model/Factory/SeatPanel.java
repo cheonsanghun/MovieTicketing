@@ -22,8 +22,11 @@ import javax.swing.JCheckBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import java.util.Vector;
+import javax.swing.DefaultListModel;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
-public class SeatPanel extends JPanel {
+public class SeatPanel extends JPanel  {
     private JLabel titleLabel;
     private JPanel seatsPanel;
     private JButton backButton;
@@ -35,26 +38,38 @@ public class SeatPanel extends JPanel {
     private int s_row = -1;
     private int s_col = -1;
 
+    
+    private Vector <String> vector;
+    
+    private int t_id;
+    private int g_id;
+    private int m_id;
+    
     String dbDriver = "org.mariadb.jdbc.Driver";
     String dbUrl = "jdbc:mariadb://127.0.0.1:3306/test";
     String dbUser = "root";
     String dbPassword = "12341234";    
     Connection dbconn = null;
     
-    private static final String DB_URL = "jdbc:mariadb://localhost:3306testmovie_db";
+    private static final String DB_URL = "jdbc:mariadb://localhost:3306/test";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "12341234";
     
-    private static final String SELECT_SEATS = "SELECT s.s_row , s.s_col FROM seat s "+
+    private static final String SELECT_SEATS = "SELECT s.s_row , s.s_col , s.t_id, s.g_id, s.m_id FROM seat s "+
             "Join theater t on t.t_id = s.t_id " +
             "Join genre g on g.g_id = s.g_id " +
             "Join movie m on m.m_id = s.m_id " +
             "where t.t_name = '%s' and g.g_name = '%s' and m.m_name = '%s'" ;
+    
     private static final String theaterIdQuery = "SELECT t_id FROM theater WHERE t_name = '%s'";
     private static final String genreIdQuery = "SELECT g_id FROM genre WHERE g_name = '%s'";
     private static final String movierIdQuery = "SELECT m_id FROM movie WHERE m_name = '%s'";
+    
+    private static final String theaterID = "SELECT t_id FROM seat  WHERE s_row = seletedRow and s_col = selectedCol";
+    private static final String genreID = "SELECT g_id FROM seat WHERE s_row = seletedRow and s_col = selectedCol";
+    private static final String movieID = "SELECT m_id FROM seat WHERE s_row = seletedRow and s_col = selectedCol";
 
-
+    private static final String theaterN="SELECT t_id FROM theater where t_name = '%s'";
 
     
     public SeatPanel(String theaterName, String genreName, String movieName) {
@@ -70,7 +85,7 @@ public class SeatPanel extends JPanel {
 
         seatsPanel = new JPanel();
         seatsPanel.setLayout(null);
-        seatsPanel.setBounds(20, 50, 500, 250);
+        seatsPanel.setBounds(20, 50, 800, 500);
         createSeats();
         add(seatsPanel);
 
@@ -93,30 +108,58 @@ public class SeatPanel extends JPanel {
         });
         add(backButton);
 
+        DefaultListModel<String> seats= new DefaultListModel<>();
+
+        
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
              Statement stmt = conn.createStatement();
              ResultSet rs = stmt.executeQuery(String.format(SELECT_SEATS,theater, genre, movie))) {
             while (rs.next()) {
                 int row = rs.getInt("s.s_row");
                 int col = rs.getInt("s.s_col");
+                int theaterid = rs.getInt("s.t_id");
+                int genre = rs.getInt("s.g_id");
+                int movie = rs.getInt("s.m_id");
                 s_row=row;
                 s_col=col;
+                t_id = theaterid;
+                g_id=genre;
+                m_id=movie;
+                
+                String SeatNum = rs.getString("s.s_row") + " , " + rs.getString("s.s_col");
+                seats.addElement(SeatNum);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+        
+        
         
         paymentButton = new JButton("결제");
         paymentButton.setBounds(130, 320, 100, 30);
         paymentButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                  if (s_row == -1 || s_col == -1) {
-            System.out.println("좌석을 선택해주세요.");
+                     JOptionPane.showMessageDialog(null, "좌석을 선택해주세요.");
         } else {
-            if (isSeatAlreadyReserved(s_row, s_col)) {
-                System.out.println("이미 예매된 좌석입니다.");
+            if (isSeatAlreadyReserved(s_row, s_col,t_id ,g_id ,m_id)) {
+                JOptionPane.showMessageDialog(null, "이미 예매된 좌석입니다.");
             } else {
+                    JOptionPane.showMessageDialog(null, "결제화면으로 넘어갑니다.");
                 saveSeatSelection(s_row, s_col);
+                
+                
+                String selectdeTheater = theater;
+                String selectedGenre = genre;
+                String selectedMovie = movie;
+                String selectedSeat = SELECT_SEATS;
+                SelectedPayPanel PayPanel = new SelectedPayPanel(selectdeTheater,selectedGenre,selectedMovie, selectedSeat);
+                Container parent = SeatPanel.this.getParent();
+                Component currentPanel = parent.getComponent(0);
+                parent.remove(currentPanel);
+                parent.add(PayPanel);
+                parent.revalidate();
+                parent.repaint();
                 
             }
         }
@@ -125,11 +168,15 @@ public class SeatPanel extends JPanel {
         add(paymentButton);
     }
 
-    private boolean isSeatAlreadyReserved(int row, int col) {
+    private boolean isSeatAlreadyReserved(int row, int col, int theaterid, int genreid, int movieid) {
     try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM seat WHERE s_row = ? AND s_col = ?")) {
+         PreparedStatement stmt = conn.prepareStatement("SELECT * FROM seat WHERE s_row = ? AND s_col = ? AND t_id = ? AND g_id = ? AND m_id = ?")) {
         stmt.setInt(1, s_row);
         stmt.setInt(2, s_col);
+        stmt.setInt(3,t_id);
+        stmt.setInt(4,g_id);
+        stmt.setInt(5,m_id);
+
         try (ResultSet rs = stmt.executeQuery()) {
             return rs.next();
         }
@@ -156,7 +203,7 @@ public class SeatPanel extends JPanel {
                     int selectedRow = (Integer.parseInt(selectedSeat) - 1) / numCols;
                     int selectedCol = (Integer.parseInt(selectedSeat) - 1) % numCols;
 
-                    if (selectedRow == s_row && selectedCol == s_col) {
+                    if (selectedRow == s_row && selectedCol == s_col ) {
                         // 이미 선택된 좌석을 다시 선택한 경우, 선택 취소
                         selectedCheckbox.setSelected(false);
                         s_row = -1;
@@ -242,7 +289,4 @@ public class SeatPanel extends JPanel {
         e.printStackTrace();
     }
 }
-
-    
 }
-

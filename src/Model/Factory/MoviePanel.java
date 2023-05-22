@@ -33,7 +33,7 @@ import javax.swing.event.ListSelectionListener;
 public abstract class MoviePanel extends JPanel implements MovieFactory {
 
     String dbDriver = "org.mariadb.jdbc.Driver";
-    String dbUrl = "jdbc:mysql://127.0.0.1:3306/test";
+    String dbUrl = "jdbc:mariadb://127.0.0.1:3306/test";
     String dbUser = "root";
     String dbPassword = "12341234";    
     Connection dbconn = null;
@@ -75,7 +75,7 @@ public abstract class MoviePanel extends JPanel implements MovieFactory {
         }
         
         JButton backButton = new JButton("뒤로 가기");
-        backButton.setBounds(20, 320, 100, 30);
+        backButton.setBounds(0, 320, 100, 30);
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Container parent = MoviePanel.this.getParent();

@@ -108,6 +108,7 @@ public class ProfileManagerModeDao {
         LoginDto dto = null;
         try {
             //Connection 객체의 참조값 얻어오기 
+            System.out.println("11111");
             conn = new DbConnect().getConn();
             //실행할 sql 문의 뼈대 미리 준비하기
             String sql = "SELECT pw,name "

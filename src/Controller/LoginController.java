@@ -37,6 +37,7 @@ public class LoginController {
         public void execute() {
             JOptionPane.showMessageDialog(null, "로그인 성공 !", "로그인 확인!", JOptionPane.DEFAULT_OPTION);
               new LoginSuccess();
+          
         }
     }
 

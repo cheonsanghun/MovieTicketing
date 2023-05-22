@@ -126,7 +126,5 @@ public class NoticeBoard {
 public JTextArea getTxtlog() {
     return txtlog;
 }
-    public static void main(String[] args) {
-        new NoticeBoard();
-    }
+
 }
