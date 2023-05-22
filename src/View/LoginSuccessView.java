@@ -16,12 +16,12 @@ import Model.Factory.TheaterPanel;
  *
  * @author Admin
  */
-public class LoginSuccess extends JFrame {
+public class LoginSuccessView extends JFrame {
 
     JPanel j;
     JButton movie, noticeboard, back;
-    Home home;
-    public LoginSuccess() {
+    FirstView home;
+    public LoginSuccessView() {
         j = new JPanel();
         j.setLayout(null);
         j.setBackground(Color.white);
@@ -55,7 +55,7 @@ public class LoginSuccess extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new NoticeBoard();
+                new NoticeBoardView();
             }
         });
         movie.addActionListener(new ActionListener() {

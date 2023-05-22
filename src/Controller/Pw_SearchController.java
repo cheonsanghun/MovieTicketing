@@ -5,7 +5,7 @@
 package Controller;
 
 import Model.PwSearchDao;
-import View.Pw_Search;
+import View.Pw_SearchView;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -17,7 +17,7 @@ import javax.swing.JTextField;
 public class Pw_SearchController {
     
        public void addAction(String uid, String uname) {
-           Pw_Search ps = new Pw_Search();
+           Pw_SearchView ps = new Pw_SearchView();
      
         LoginDto dto = new LoginDto.Builder()
                 .setName(uname)

@@ -4,7 +4,7 @@
  */
 package View;
 
-import View.ManagerLogin;
+import View.ManagerLoginView;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -15,12 +15,12 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-public class Home extends JFrame {
+public class FirstView extends JFrame {
 
     JButton b1, b2;
     JPanel j;
 
-    public Home() {
+    public FirstView() {
           j = new JPanel();
           j.setLayout(null);  
           j.setBackground(Color.white);
@@ -63,7 +63,7 @@ public class Home extends JFrame {
         b1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                LoginFrame loginFrame = new LoginFrame();
+                LoginFrameView loginFrame = new LoginFrameView();
                 setVisible(false);
             }
         });
@@ -71,7 +71,7 @@ public class Home extends JFrame {
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                ManagerLogin managerlogin = new ManagerLogin();
+                ManagerLoginView managerlogin = new ManagerLoginView();
                 setVisible(false);
             }
         });

@@ -23,11 +23,11 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 import Controller.LoginDto;
-import Controller.MyMouseListener;
+import Controller.MouseLisstenerController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-public class MembershipManagerMode extends JFrame implements ActionListener, PropertyChangeListener {
+public class MembershipManagerModeView extends JFrame implements ActionListener, PropertyChangeListener {
 
     JPanel p;
     JButton back, insert, delete, update;
@@ -37,7 +37,7 @@ public class MembershipManagerMode extends JFrame implements ActionListener, Pro
     JTextField t1, t2, t3, t4, t5, t6, t7;
     List<LoginDto> companys;
  
-    MembershipManagerMode() {
+    MembershipManagerModeView() {
         //관리자화면 프레임 gui 
         p = new JPanel();
         p.setLayout(null);
@@ -154,7 +154,7 @@ public class MembershipManagerMode extends JFrame implements ActionListener, Pro
         showMembers();
            
         
-        table.addMouseListener((MouseListener) new MyMouseListener());
+        table.addMouseListener((MouseListener) new MouseLisstenerController());
        
         insert.addActionListener(this);
         delete.addActionListener(this);
@@ -195,7 +195,7 @@ public class MembershipManagerMode extends JFrame implements ActionListener, Pro
         back.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                Home home = new Home();
+                FirstView home = new FirstView();
                 home.setVisible(true);
                 setVisible(false);
             }

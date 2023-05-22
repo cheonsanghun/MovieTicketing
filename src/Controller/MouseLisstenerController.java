@@ -12,7 +12,7 @@ import javax.swing.JOptionPane;
  *
  * @author Admin
  */
-public class MyMouseListener extends MouseAdapter {
+public class MouseLisstenerController extends MouseAdapter {
 
     public void mouseClicked(MouseEvent e) {
       

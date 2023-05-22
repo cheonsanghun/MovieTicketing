@@ -22,7 +22,7 @@ import Model.PwSearchDao;
  *
  * @author Admin
  */
-public class Pw_Search extends JFrame  implements ActionListener {
+public class Pw_SearchView extends JFrame  implements ActionListener {
 
     private PwSearchDao pwsearchdao;
     JPanel p;
@@ -31,7 +31,7 @@ public class Pw_Search extends JFrame  implements ActionListener {
     JButton b1, b2;
     boolean isSuccess;
      
-    public Pw_Search() {
+    public Pw_SearchView() {
         p = new JPanel();
         p.setLayout(null);
         p.setBackground(Color.white);

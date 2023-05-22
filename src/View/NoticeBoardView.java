@@ -11,7 +11,7 @@ package View;
 import Controller.NoticeBoardController;
 import Model.observer.Reviewobserver;
 import Model.observer.Reviewdata;
-import View.LoginSuccess;
+import View.LoginSuccessView;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.awt.FlowLayout;
@@ -26,7 +26,7 @@ import javax.swing.*;
 import java.awt.*;
 import Model.observer.Observer;
 
-public class NoticeBoard {
+public class NoticeBoardView {
     String array[]={"1","2","3","4","5"};
     JComboBox combox = new JComboBox(array);
     JButton btn1=new JButton("확인");
@@ -44,7 +44,7 @@ public class NoticeBoard {
 		final String DB_URL = 
 				"jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
     
-    public NoticeBoard(){
+    public NoticeBoardView(){
           controller = new NoticeBoardController(this);
         final JFrame frame=new JFrame("게시판"); //
         frame.setSize(800, 500); // 
@@ -117,7 +117,7 @@ public class NoticeBoard {
             @Override
             public void actionPerformed(ActionEvent e) {
            
-                new LoginSuccess();
+                new LoginSuccessView();
                 frame.setVisible(false);
             }
         });

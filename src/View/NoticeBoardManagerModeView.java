@@ -8,6 +8,7 @@ package View;
  */
 
 import Controller.LoginDto;
+import Controller.NoticeBoardManagerController;
 import DbConnect.DbConnect;
 import java.awt.*;
 import javax.swing.*;
@@ -28,7 +29,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class NoticeBoardManagerMode extends JPanel {
+public class NoticeBoardManagerModeView extends JPanel {
     
     JButton delete=new JButton("삭제");
     JTextField t1=new JTextField(10);
@@ -38,8 +39,10 @@ public class NoticeBoardManagerMode extends JPanel {
     java.util.List<LoginDto> companys;
     JTable table;
     DefaultTableModel dft;
+    private NoticeBoardManagerController controller;
     
-    public NoticeBoardManagerMode() {
+    public NoticeBoardManagerModeView() {
+        controller = new NoticeBoardManagerController();
         JFrame frame = new JFrame("관리자 모드");
         frame.setSize(600, 400);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -80,8 +83,8 @@ public class NoticeBoardManagerMode extends JPanel {
                     String review = table.getValueAt(selectedRow, 1).toString();
                     
                     // 데이터베이스에서 삭제
-                    deleteFromDatabase(rate, review);
-
+                    controller.deleteReview(rate, review);
+                    
                     // JTable에서 삭제
                     dft.removeRow(selectedRow);
                 }
@@ -92,52 +95,11 @@ public class NoticeBoardManagerMode extends JPanel {
         loadDataFromDatabase();
         
     }
-    
-    private void deleteFromDatabase(String rate, String review) {
-        try {
-            Connection conn = conn = new DbConnect().getConn();
-            PreparedStatement stmt = conn.prepareStatement("DELETE FROM review WHERE rate = ? AND review = ?");
-            stmt.setString(1, rate);
-            stmt.setString(2, review);
-                  int index = table.getSelectedRow();
-            // 쿼리 실행
-            int rowsAffected = stmt.executeUpdate();
-      
-            if (rowsAffected > 0) {
-                JOptionPane.showMessageDialog(null, "삭제 되었습니다");
-            }
-           
-            stmt.close();
-            conn.close();
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-    }
-    
-    private void loadDataFromDatabase() {
-        try {
-            // 데이터베이스 연결 설정
-            Connection conn =conn = new DbConnect().getConn();
-            PreparedStatement stmt = conn.prepareStatement("SELECT rate, review FROM review");
-
-            // 쿼리 실행 및 결과 가져오기
-            ResultSet rs = stmt.executeQuery();
-
-            // 결과를 JTable에 추가
-            while (rs.next()) {
-                String rate = rs.getString("rate");
-                String review = rs.getString("review");
-
-                Object[] rowData = { rate, review };
-                dft.addRow(rowData);
-            }
-
-            // 자원 해제
-            rs.close();
-            stmt.close();
-            conn.close();
-        } catch (SQLException e) {
-            e.printStackTrace();
+     private void loadDataFromDatabase() {
+        dft.setRowCount(0); // Clear the table data
+        Object[][] data = controller.getReviewData();
+        for (Object[] rowData : data) {
+            dft.addRow(rowData);
         }
     }
 }

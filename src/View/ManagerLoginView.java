@@ -23,13 +23,13 @@ import java.io.FileNotFoundException;
  *
  * @author Admin
  */
-public class ManagerLogin extends JFrame {
+public class ManagerLoginView extends JFrame {
 
     JButton login, back;
     JPanel j;
     JLabel word, infor, infor2;
     JPasswordField pwIn;
-    public ManagerLogin() {
+    public ManagerLoginView() {
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // 화면 가운데 배치
@@ -87,7 +87,7 @@ public class ManagerLogin extends JFrame {
                     JOptionPane.showMessageDialog(null, "로그인 확인", "로그인 확인!", JOptionPane.DEFAULT_OPTION);
                     setVisible(false);
                 
-                    new ManagerMode();
+                    new ManagerModeSelectView();
 
                 } else {
 

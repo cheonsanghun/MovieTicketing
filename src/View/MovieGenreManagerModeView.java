@@ -32,7 +32,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author kjbg4
  */
-public class MovieManagerMode extends JFrame implements ActionListener, PropertyChangeListener {
+public class MovieGenreManagerModeView extends JFrame implements ActionListener, PropertyChangeListener {
 
     JPanel p;
     JButton insert, delete, back;
@@ -42,7 +42,7 @@ public class MovieManagerMode extends JFrame implements ActionListener, Property
     JLabel label1, label2;
     JTextField genre, movie;
 
-    MovieManagerMode() {
+    MovieGenreManagerModeView() {
         //관리자화면 프레임 gui 
         p = new JPanel();
         p.setLayout(null);
@@ -125,7 +125,7 @@ public class MovieManagerMode extends JFrame implements ActionListener, Property
         back.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                new Home();
+                new FirstView();
                 setVisible(false);
             }
         });

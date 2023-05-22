@@ -14,11 +14,11 @@ import javax.swing.JPanel;
  *
  * @author kjbg4
  */
-public class ManagerMode extends JFrame {
+public class ManagerModeSelectView extends JFrame {
     JPanel p;
     JButton b1,b2,b3;
     
-    ManagerMode(){
+    ManagerModeSelectView(){
     p = new JPanel();
         p.setLayout(null);
         setSize(1000, 700);
@@ -49,7 +49,7 @@ public class ManagerMode extends JFrame {
       
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                 new MembershipManagerMode();                        
+                 new MembershipManagerModeView();                        
             }
         });
            
@@ -57,7 +57,7 @@ public class ManagerMode extends JFrame {
       
             public void actionPerformed(ActionEvent e) { 
                  setVisible(false);
-               new MovieManagerMode();
+               new MovieGenreManagerModeView();
             }
         });
              
@@ -65,7 +65,7 @@ public class ManagerMode extends JFrame {
       
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
-                new NoticeBoardManagerMode();
+                new NoticeBoardManagerModeView();
             }
         });
     }

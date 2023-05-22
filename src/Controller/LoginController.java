@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Model.Factory.TheaterPanel;
 import DbConnect.DbConnect;
-import View.LoginSuccess;
+import View.LoginSuccessView;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -36,7 +36,7 @@ public class LoginController {
         @Override
         public void execute() {
             JOptionPane.showMessageDialog(null, "로그인 성공 !", "로그인 확인!", JOptionPane.DEFAULT_OPTION);
-              new LoginSuccess();
+              new LoginSuccessView();
           
         }
     }

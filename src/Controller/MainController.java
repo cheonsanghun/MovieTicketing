@@ -4,21 +4,21 @@
  */
 package Controller;
 
-import View.Home;
-import View.Home;
+import View.FirstView;
+import View.FirstView;
 
 /**
  *
  * @author Admin
  */
-public class MoiveTicketing {
+public class MainController {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
 
-        new Home();
+        new FirstView();
     }
     
 }

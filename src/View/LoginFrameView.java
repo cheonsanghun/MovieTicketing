@@ -20,12 +20,12 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import View.Home;
-import View.Membership;
-import View.Pw_Search;
+import View.FirstView;
+import View.MembershipView;
+import View.Pw_SearchView;
 import Model.Factory.TheaterPanel;
 
-public class LoginFrame extends JFrame {
+public class LoginFrameView extends JFrame {
 
     List<LoginDto> companys;
     Connection conn;
@@ -41,7 +41,7 @@ public class LoginFrame extends JFrame {
     //상태패턴
     
     //해당 클래스 프레임
-    public LoginFrame() {
+    public LoginFrameView() {
         frame=this;
         p = new JPanel();
         p.setLayout(null);
@@ -78,7 +78,7 @@ public class LoginFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
           
                   
-                Membership membership = new Membership();
+                MembershipView membership = new MembershipView();
           
             }
         });
@@ -91,7 +91,7 @@ public class LoginFrame extends JFrame {
             public void actionPerformed(ActionEvent e) {
           
                   
-                new Pw_Search();
+                new Pw_SearchView();
           
             }
         });
@@ -118,7 +118,7 @@ public class LoginFrame extends JFrame {
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Home home = new Home();
+                FirstView home = new FirstView();
                 setVisible(false);
             }
         });

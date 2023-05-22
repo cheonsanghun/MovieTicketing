@@ -22,7 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import Controller.LoginDto;
 import java.awt.Color;
-public class Membership extends JFrame implements ActionListener {
+public class MembershipView extends JFrame implements ActionListener {
 
     List<LoginDto> companys;
     Connection conn;
@@ -38,7 +38,7 @@ public class Membership extends JFrame implements ActionListener {
     boolean isSuccess;
 
     //프레임 화면 gui
-    public Membership() {
+    public MembershipView() {
         p = new JPanel();
         p.setLayout(null);
         p.setBackground(Color.white);

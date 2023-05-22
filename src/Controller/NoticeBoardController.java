@@ -5,7 +5,7 @@
 package Controller;
 import Model.observer.Reviewdata;
 import Model.observer.Observer;
-import View.NoticeBoard;
+import View.NoticeBoardView;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -24,9 +24,9 @@ public class NoticeBoardController {
 		final String DB_URL = 
 				"jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
     public ReviewData reviewData;
-    private final NoticeBoard noticeBoard;
+    private final NoticeBoardView noticeBoard;
     
-    public NoticeBoardController(NoticeBoard noticeBoard) {
+    public NoticeBoardController(NoticeBoardView noticeBoard) {
          this.noticeBoard = noticeBoard;
         reviewData = new ReviewData();
     }
