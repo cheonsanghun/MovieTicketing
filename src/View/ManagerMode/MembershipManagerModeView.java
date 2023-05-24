@@ -127,7 +127,7 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
         p.add(delete);
         add(p);
 
-        String[] colNames = {"이름", "나이", "아이디", "비밀번호", "폰번호", "메일", "주소"};
+        String[] colNames = {"이름", "나이", "아이디", "비밀번호", "폰번호", "메일", "주소","결제 정보"};
         // 테이블에 출력할 데이터를 가지고있는 디폴트모델테이블
         dft = new DefaultTableModel(colNames, 0) {
             //수정 가능 여부를 리턴하는 메소드
@@ -217,6 +217,7 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
             String phone = (String) dft.getValueAt(index, 4); //1번째 인덱스의 이름을 읽어옴
             String mail = (String) dft.getValueAt(index, 5); //3번째 인덱스의 입사일을 읽어옴
             String address = (String) dft.getValueAt(index, 6); //3번째 인덱스의 입사일을 읽어옴
+            int cardnum = (int) dft.getValueAt(index, 7); //3번째 인덱스의 입사일을 읽어옴
             //DB 에 수정 반영
 
             //빌더 패턴 
@@ -228,6 +229,7 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
                     .setPhone(phone)
                     .setMail(mail)
                     .setAddress(address)
+                    .setcardnum(cardnum)
                     .build();
             new ProfileManagerModeDao().update(dto);
         }
@@ -237,7 +239,7 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
     public void showMembers() {
         companys = new ProfileManagerModeDao().getList();
         for (LoginDto tmp : companys) {
-            Object[] row = {tmp.getName(), tmp.getAge(), tmp.getId(), tmp.getPw(), tmp.getPhone(), tmp.getMail(), tmp.getAddress()};
+            Object[] row = {tmp.getName(), tmp.getAge(), tmp.getId(), tmp.getPw(), tmp.getPhone(), tmp.getMail(), tmp.getAddress(), tmp.getcardnum()};
             dft.addRow(row);
         }
     }

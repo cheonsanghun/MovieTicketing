@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Model.Factory.TheaterPanel;
 import DbConnect.DbConnect;
+import Model.Factory.PayPanel;
 import View.Login.LoginSuccessView;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -120,12 +121,14 @@ public class LoginController {
                 rs = stmt.executeQuery();
                 rs.next();
 
-                if (upw.equals(rs.getString(1))) {
+                  if (upw.equals(rs.getString(1))) {
                     setState(loginSuccessState);
+                    PayPanel.update(uid,upw);
+                    
                 } else {
                     setState(loginFailureState);
+                    
                 }
-
             } catch (SQLException ex) {
                 setState(loginFailureState);
                 System.out.println("SQLException" + ex);

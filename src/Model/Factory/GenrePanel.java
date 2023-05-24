@@ -34,6 +34,7 @@ import javax.swing.event.ListSelectionListener;
  *
  * @author USER
  */
+
 public abstract class GenrePanel extends JPanel implements MovieFactory {
 
     String dbDriver = "org.mariadb.jdbc.Driver";

@@ -199,7 +199,7 @@ public class ProfileManagerModeDao {
             //Connection 객체의 참조값 얻어오기 
             conn = new DbConnect().getConn();
             //실행할 sql 문의 뼈대 미리 준비하기
-            String sql = "SELECT name,age,id, pw,phone,mail,address"
+            String sql = "SELECT name,age,id, pw,phone,mail,address,cardnum"
                     + " FROM profile";
             //PreparedStatement 객체의 참조값 얻어오기
             pstmt = conn.prepareStatement(sql);
@@ -220,6 +220,7 @@ public class ProfileManagerModeDao {
                 .setPhone(rs.getString("phone"))
                 .setMail(rs.getString("mail"))
                 .setAddress(rs.getString("address"))
+                .setcardnum(rs.getInt("cardnum"))
                 .build();
 
                 list.add(dto);

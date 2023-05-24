@@ -42,6 +42,7 @@ public class ManagerModeController {
                 .setPhone(phone)
                 .setMail(mail)
                 .setAddress(address)
+                
                 .build();
         //작업의 성공여부를 리턴 받는다. 
         boolean isSuccess = new ProfileManagerModeDao().insert(dto);

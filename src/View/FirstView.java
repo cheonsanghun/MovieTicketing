@@ -48,7 +48,7 @@ public class FirstView extends JFrame {
         b2.setBounds(450, 230, 200, 100);
         b2.setLayout(null);
         
-          ImageIcon Logo = new ImageIcon("C:\\Users\\kjbg4\\Desktop\\MovieTicketing1\\src\\MainPng\\main.png");
+          ImageIcon Logo = new ImageIcon("C:\\Users\\Admin\\OneDrive\\πŸ≈¡ »≠∏È\\MovieTicketing\\src\\image\\main.png");
         JLabel movieLogo = new JLabel(Logo);
         movieLogo.setBounds(300,0,250,250);
         movieLogo.setLayout(null);

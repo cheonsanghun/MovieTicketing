@@ -4,6 +4,7 @@
  */
 package Model.Factory;
 
+import View.Login.LoginFrameView;
 import java.awt.*;
 import java.awt.Container;
 import java.awt.Panel;
@@ -22,10 +23,14 @@ import javax.swing.*;
  */
 public class PayPanel extends JPanel {
 
-    private JLabel titleLabel;
+    private String uid, upw;
+    private static String cardnumber;
+    private static String id, pw;
+
+    private JLabel titleLabel, cardnumber1;
     private JPanel seatsPanel;
     private JButton backButton, addButton;
-    private String cardnumber;
+
     private int s_row, s_col, theaterid, genreid, movieid;
     JPanel PayPanel;
     JFrame frame;
@@ -56,6 +61,11 @@ public class PayPanel extends JPanel {
         titleLabel.setBounds(335, 85, 200, 40);
         titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 25));
 
+        cardnumber1 = new JLabel("카드 번호 :");
+        cardnumber1.setLayout(null);
+        cardnumber1.setBounds(190, 150, 100, 40);
+        cardnumber1.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 15));
+
         this.theater = theaterName;
         this.genre = genreName;
         this.movie = movieName;
@@ -80,27 +90,55 @@ public class PayPanel extends JPanel {
         backButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                    int result = JOptionPane.showConfirmDialog(null, "결제를 취소합니다","확인", JOptionPane.OK_CANCEL_OPTION);
-                    if (result == JOptionPane.OK_OPTION) {
-           SwingUtilities.getWindowAncestor(PayPanel.this).dispose();
-        }
+                int result = JOptionPane.showConfirmDialog(null, "결제를 취소합니다", "확인", JOptionPane.OK_CANCEL_OPTION);
+                if (result == JOptionPane.OK_OPTION) {
+                    SwingUtilities.getWindowAncestor(PayPanel.this).dispose();
+                }
             }
         });
-        
+
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                cardnumber = card.getText();
                 savecardnumSelection();
+                if (cardnumber == " " || cardnumber.isEmpty()) {
+                    JOptionPane.showMessageDialog(null, "빈칸입니다. 카드 번호를 입력하세요.");
+                    SwingUtilities.getWindowAncestor(PayPanel.this).setVisible(true);
+                }
+                 try ( Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);  PreparedStatement pstmt = conn.prepareStatement("UPDATE seat SET cardnum = ? WHERE s_row = ? and s_col = ? and t_id = ? and g_id = ? and m_id = ? ")) {
+
+            pstmt.setString(1, cardnumber);
+            pstmt.setInt(2, s_row);
+            pstmt.setInt(3, s_col);
+            pstmt.setInt(4, theaterid);
+            pstmt.setInt(5, genreid);
+            pstmt.setInt(6, movieid);
+
+            int rows = pstmt.executeUpdate();
+
+            if (rows > 0) {
+                JOptionPane.showMessageDialog(null, "성공적으로 결제가 완료되었습니다.");
+                UpdatePro(cardnumber);
+            } if( rows<0) {
+                  JOptionPane.showMessageDialog(null, "결제에 실패하였습니다..");
+            }
+          
+
+            card.setText("");
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
             }
         });
-        
+
         addButton.setActionCommand("add");
         add(titleLabel);
         add(card);
         add(addButton);
         add(backButton);
-
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS); PreparedStatement pstmt = conn.prepareStatement(SELECT_Pay)) {
+        add(cardnumber1);
+        try ( Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);  PreparedStatement pstmt = conn.prepareStatement(SELECT_Pay)) {
             pstmt.setString(1, theater);
             pstmt.setString(2, genre);
             pstmt.setString(3, movie);
@@ -120,18 +158,40 @@ public class PayPanel extends JPanel {
     }
 
     private void savecardnumSelection() {
-        String cardnumber = card.getText();
+        cardnumber = card.getText();
+        LoginFrameView LoginFrame = new LoginFrameView();
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS); PreparedStatement pstmt = conn.prepareStatement("UPDATE seat SET cardnum = '%s' WHERE s.s_row = seatMarking and s.s_col = seatMarking and s.t_id = theaterName and s.g_id = genreName and s.m_id = movieName")) {
+        System.out.println("cardnumber: " + cardnumber);
+        System.out.println("s_row: " + s_row);
+        System.out.println("s_col: " + s_col);
+        System.out.println("theater: " + theaterid);
+        System.out.println("genre: " + genreid);
+        System.out.println("movie: " + movieid);
+       
+    }
+
+    public static void update(String uid, String upw) {
+
+        id = uid;
+        pw = upw;
+
+    }
+
+    private void UpdatePro(String cardnumber) {
+        try ( Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);  PreparedStatement pstmt = conn.prepareStatement("UPDATE profile SET cardnum = ? WHERE id = ? AND pw = ?")) {
 
             pstmt.setString(1, cardnumber);
-            pstmt.setInt(2, s_row);
-            pstmt.setInt(3, s_col);
-            pstmt.setInt(4, theaterid);
-            pstmt.setInt(5, genreid);
-            pstmt.setInt(6, movieid);
+            pstmt.setString(2, id);
+            pstmt.setString(3, pw);
 
-            pstmt.executeUpdate();
+            int rows = pstmt.executeUpdate();
+            if (rows > 0) {
+                System.out.println("Data updated successfully.");
+
+            } else {
+                System.out.println("No rows were affected.");
+            }
+            card.setText("");
         } catch (SQLException ex) {
             ex.printStackTrace();
         }

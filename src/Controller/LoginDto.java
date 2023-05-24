@@ -17,11 +17,13 @@ public class LoginDto {
     private String phone;
     private String mail;
     private String address;
-
+    private int cardnum;
     public String getName() {
         return name;
     }
- 
+    public int getcardnum() {
+        return cardnum;
+    }
     public String getAge() {
         return age;
     }
@@ -62,6 +64,7 @@ public class LoginDto {
         this.phone =  builder.phone;
         this.mail =  builder.mail;
         this.address =  builder.address;
+        this.cardnum=builder.cardnum;
     }
 
     public static class Builder {
@@ -73,7 +76,7 @@ public class LoginDto {
          private String phone;
          private String mail;
          private String address;
-
+         private int cardnum;
         public Builder() {
         }
 
@@ -81,7 +84,10 @@ public class LoginDto {
             this.name = name;
             return this;
         }
-
+         public Builder setcardnum(int cardnum) {
+            this.cardnum = cardnum;
+            return this;
+        }
         public Builder setAge(String age) {
             this.age = age;
             return this;

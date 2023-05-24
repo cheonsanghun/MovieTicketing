@@ -24,6 +24,7 @@ import java.io.FileNotFoundException;
  *
  * @author Admin
  */
+
 public class ManagerLoginView extends JFrame {
 
     JButton login, back;

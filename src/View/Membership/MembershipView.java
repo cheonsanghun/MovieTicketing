@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import Controller.LoginDto;
 import java.awt.Color;
+import java.awt.Font;
 
 public class MembershipView extends JFrame implements ActionListener {
 
@@ -51,11 +52,15 @@ public class MembershipView extends JFrame implements ActionListener {
         join = new JButton("가입하기");
         join.setLayout(null);
         join.setBounds(20, 700, 250, 50);
-
+        join.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+        join.setBackground(Color.white);
+        
         cancel = new JButton("취소");
         cancel.setLayout(null);
         cancel.setBounds(310, 700, 250, 50);
-
+        cancel.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+        cancel.setBackground(Color.white);
+        
         name = new JTextField();
         name.setLayout(null);
         name.setBounds(200, 30, 200, 50);
@@ -184,7 +189,7 @@ public class MembershipView extends JFrame implements ActionListener {
             return; // 입력이 올바르지 않으면 메서드 실행 중단
         }
         if (uname.contains(" ") || uage.contains(" ") || uid.contains(" ") || upw.contains(" ")
-                || upwreconfirm.contains(" ") || uphone.contains(" ") || umail.contains(" ") || uaddress.contains(" ")) {
+                || upwreconfirm.contains(" ") || uphone.contains(" ") || umail.contains(" ") ) {
             JOptionPane.showMessageDialog(null, "입력 값에 공백이 포함되어 있습니다.", "입력 오류", JOptionPane.DEFAULT_OPTION);
             return; // 입력에 공백이 포함되어 있으면 메서드 실행 중단
         }
