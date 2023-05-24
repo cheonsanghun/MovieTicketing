@@ -1,4 +1,4 @@
-package View;
+package View.Login;
 
 import Controller.LoginController;
 import Controller.LoginController.LoginStateMachine;
@@ -21,9 +21,10 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import View.FirstView;
-import View.MembershipView;
-import View.Pw_SearchView;
+import View.Membership.MembershipView;
+import View.Pw_Search.Pw_SearchView;
 import Model.Factory.TheaterPanel;
+import View.Membership.MembershipView;
 
 public class LoginFrameView extends JFrame {
 
@@ -39,10 +40,10 @@ public class LoginFrameView extends JFrame {
     JButton back;
     JFrame frame;
     //상태패턴
-    
+
     //해당 클래스 프레임
     public LoginFrameView() {
-        frame=this;
+        frame = this;
         p = new JPanel();
         p.setLayout(null);
         p.setBackground(Color.white);
@@ -76,23 +77,21 @@ public class LoginFrameView extends JFrame {
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-          
-                  
+
                 MembershipView membership = new MembershipView();
-          
+
             }
         });
-         b3 = new JButton("비밀번호 찾기");
+        b3 = new JButton("비밀번호 찾기");
         b3.setBackground(Color.white);
-        b3.setBounds(500, 340, 150, 30);
+        b3.setBounds(260, 310, 150, 30);
         b3.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-           b3.addActionListener(new ActionListener() {
+        b3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-          
-                  
+
                 new Pw_SearchView();
-          
+
             }
         });
         l1 = new JLabel("아이디 : ");
@@ -111,10 +110,10 @@ public class LoginFrameView extends JFrame {
         pw = new JTextField();
         pw.setBounds(275, 240, 185, 30);
 
-        back = new JButton("돌아가기");
+        back = new JButton("처음으로");
         back.setBackground(Color.white);
         back.setFont(new Font("맑은 고딕", Font.BOLD, 14));
-        back.setBounds(685, 431, 100, 30);
+        back.setBounds(450, 310, 100, 30);
         back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -123,14 +122,15 @@ public class LoginFrameView extends JFrame {
             }
         });
 
-       p.add(l1);
+        p.add(l1);
         p.add(l2);
         p.add(id);
         p.add(pw);
         p.add(b1);
         p.add(b2);
-       p.add(back);
-       p.add(b3);
+        p.add(back);
+        p.add(b3);
         add(p);
     }
+ 
 }

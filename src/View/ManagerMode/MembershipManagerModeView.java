@@ -2,8 +2,9 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package View;
+package View.ManagerMode;
 
+import View.ManagerMode.ManagerModeSelectView;
 import Controller.ManagerModeController;
 import Model.ProfileManagerModeDao;
 import java.awt.Color;
@@ -195,8 +196,8 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
         back.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                FirstView home = new FirstView();
-                home.setVisible(true);
+                ManagerModeSelectView mmv = new ManagerModeSelectView();
+               
                 setVisible(false);
             }
         });
@@ -272,6 +273,10 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
     }
 
     public void actionPerformed(ActionEvent e) {
+        if (e.getActionCommand().equals("add")) {
+             dft.setRowCount(0);
+                showMembers();
 
+    }
     }
 }

@@ -21,14 +21,23 @@ public class MovieGenreController {
     DefaultTableModel dft;
     JTable table;
     List<MovieGenreDto> companys;
-
+    
+    public MovieGenreController(DefaultTableModel dft, JTable table){
+        this.dft=dft;
+        this.table = table;
+        table.setModel(dft);  // 테이블과 DefaultTableModel 연결
+    }
+    
     public void showMembers() {
-        companys = new MovieGenreDao().getList();
+        MovieGenreDao dao = new MovieGenreDao();
+        companys = dao.getList();
+        dft.setRowCount(0);
         for (MovieGenreDto tmp : companys) {
             Object[] row = {tmp.getGenre(), tmp.getMovie()};
             dft.addRow(row);
         }
-    }
+        }
+    
 
     public void addAction(String m_name, String g_name) {
         //1. 입력한 이름과 주소를 읽어온다.
@@ -44,6 +53,9 @@ public class MovieGenreController {
 
         if (isSuccess) {
             JOptionPane.showMessageDialog(null, "저장 했습니다.");
+            dft.setRowCount(0);
+            showMembers();
+               dft.fireTableDataChanged();
             //행의 갯수를 강제로 0 로 만들고 
 
             //다시 출력하기

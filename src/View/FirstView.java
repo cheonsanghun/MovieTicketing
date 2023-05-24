@@ -4,7 +4,8 @@
  */
 package View;
 
-import View.ManagerLoginView;
+import View.Login.LoginFrameView;
+import View.ManagerMode.ManagerLoginView;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -47,15 +48,15 @@ public class FirstView extends JFrame {
         b2.setBounds(450, 230, 200, 100);
         b2.setLayout(null);
         
-          ImageIcon Logo = new ImageIcon("C:\\Users\\Admin\\OneDrive\\πŸ≈¡ »≠∏È\\MovieTicketing\\src\\Main\\main.png");
-        JLabel HDDLogo = new JLabel(Logo);
-        HDDLogo.setBounds(300,0,250,250);
-        HDDLogo.setLayout(null);
+          ImageIcon Logo = new ImageIcon("C:\\Users\\kjbg4\\Desktop\\MovieTicketing1\\src\\MainPng\\main.png");
+        JLabel movieLogo = new JLabel(Logo);
+        movieLogo.setBounds(300,0,250,250);
+        movieLogo.setLayout(null);
        
        
         j.add(b1);
         j.add(b2);
-        j.add(HDDLogo);
+        j.add(movieLogo);
         add(j);
 
           setVisible(true);

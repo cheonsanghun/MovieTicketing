@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package View;
+package View.Membership;
 
 import Model.ProfileManagerModeDao;
 import java.awt.event.ActionEvent;
@@ -22,6 +22,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import Controller.LoginDto;
 import java.awt.Color;
+
 public class MembershipView extends JFrame implements ActionListener {
 
     List<LoginDto> companys;
@@ -121,7 +122,7 @@ public class MembershipView extends JFrame implements ActionListener {
         l9 = new JLabel(" ");
         l9.setLayout(null);
 
-           p.add(join);
+        p.add(join);
         p.add(cancel);
         p.add(name);
         p.add(age);
@@ -140,12 +141,19 @@ public class MembershipView extends JFrame implements ActionListener {
         p.add(l7);
         p.add(l8);
         p.add(l9);
-          add(p);
+        add(p);
         setVisible(true);
         join.addActionListener(this);
         join.setActionCommand("add");
         cancel.addActionListener(this);
+        join.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
 
+                addAction();
+
+            }
+        });
         cancel.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -156,29 +164,31 @@ public class MembershipView extends JFrame implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) { // 버튼 클릭시에 발동되는 메소드
-        if (e.getActionCommand().equals("add")) {
-            addAction();
-        }
+
     }
 
     //데이터 입력후 회원가입 확인여부
     private void addAction() {
-        String uname = name.getText();
-        String uage = age.getText();
-        String uid = id.getText();
-        String upw = pw.getText();
-        String upwreconfirm = pwreconfirm.getText();
-        String uphone = phone.getText();
-        String umail = mail.getText();
-        String uaddress = address.getText();
-        //빌더 패턴 적용
-        
-        if (uid.replaceAll(" ", "").equals("") || upw.replaceAll(" ", "").equals("") || uname.replaceAll(" ", "").equals("")
-                || uage.replaceAll(" ", "").equals("") || upwreconfirm.replaceAll(" ", "").equals("") || uphone.replaceAll(" ", "").equals("")
-                || umail.replaceAll(" ", "").equals("") || uaddress.replaceAll(" ", "").equals("")) {
-            JOptionPane.showMessageDialog(null, "입력 방식이 옳지 않습니다. ", "입력 오류", JOptionPane.DEFAULT_OPTION);
-            return;
+        String uname = name.getText().trim();
+        String uage = age.getText().trim();
+        String uid = id.getText().trim();
+        String upw = pw.getText().trim();
+        String upwreconfirm = pwreconfirm.getText().trim();
+        String uphone = phone.getText().trim();
+        String umail = mail.getText().trim();
+        String uaddress = address.getText().trim();
+
+        if (uname.isEmpty() || uage.isEmpty() || uid.isEmpty() || upw.isEmpty()
+                || upwreconfirm.isEmpty() || uphone.isEmpty() || umail.isEmpty() || uaddress.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "입력 방식이 옳지 않습니다.", "입력 오류", JOptionPane.DEFAULT_OPTION);
+            return; // 입력이 올바르지 않으면 메서드 실행 중단
         }
+        if (uname.contains(" ") || uage.contains(" ") || uid.contains(" ") || upw.contains(" ")
+                || upwreconfirm.contains(" ") || uphone.contains(" ") || umail.contains(" ") || uaddress.contains(" ")) {
+            JOptionPane.showMessageDialog(null, "입력 값에 공백이 포함되어 있습니다.", "입력 오류", JOptionPane.DEFAULT_OPTION);
+            return; // 입력에 공백이 포함되어 있으면 메서드 실행 중단
+        }
+
         if (uname.length() == 0 || uage.length() == 0 || uid.length() == 0 || upw.length() == 0 || uphone.length() == 0 || umail.length() == 0 || uaddress.length() == 0) {
             JOptionPane.showMessageDialog(this, "빈칸을 입력해주세요.");
         } else {
@@ -212,7 +222,5 @@ public class MembershipView extends JFrame implements ActionListener {
 
             }
         }
-
     }
-
 }

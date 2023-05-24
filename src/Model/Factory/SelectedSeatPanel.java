@@ -8,35 +8,33 @@ package Model.Factory;
  *
  * @author USER
  */
-public class SelectedSeatPanel extends SeatPanel{
+public class SelectedSeatPanel extends SeatPanel {
+
     private String selectedGenre;
     private String selectedTheater;
     private String selectedMovie;
-    
-    
-    public SelectedSeatPanel(String theaterName, String genreName , String movieName) {
-        super(theaterName,genreName,movieName);
+
+    public SelectedSeatPanel(String theaterName, String genreName, String movieName) {
+        super(theaterName, genreName, movieName);
         this.selectedTheater = theaterName;
         this.selectedGenre = genreName;
         this.selectedMovie = movieName;
     }
 
-
-
     public TheaterPanel createTheaterPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
 
     public GenrePanel createGenrePanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
 
     public MoviePanel createMoviePanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
 
     public SeatPanel creatSeatPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
-    
+
 }

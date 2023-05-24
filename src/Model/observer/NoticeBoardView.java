@@ -2,16 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package View;
+package Model.observer;
 
 /**
  *
  * @author cherr
  */
-import Controller.NoticeBoardController;
 import Model.observer.Reviewobserver;
 import Model.observer.Reviewdata;
-import View.LoginSuccessView;
+import View.Login.LoginSuccessView;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.awt.FlowLayout;
@@ -25,6 +24,7 @@ import java.sql.Statement;
 import javax.swing.*;
 import java.awt.*;
 import Model.observer.Observer;
+import View.Login.LoginSuccessView;
 
 public class NoticeBoardView {
     String array[]={"1","2","3","4","5"};

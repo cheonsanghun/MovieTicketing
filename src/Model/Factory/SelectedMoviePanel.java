@@ -22,38 +22,29 @@ public class SelectedMoviePanel extends MoviePanel {
         this.selectedTheater = theaterName;
         this.selectedGenre = genreName;
     }
-
-    /*SelectedMoviePanel(String selectedGenre) {
-    this(null,selectedGenre);
-    }*/
-
-
-
-
-
     @Override
     public TheaterPanel createTheaterPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;
     }
 
     @Override
-    public GenrePanel createGenrePanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public GenrePanel createGenrePanel() {    
+        return null;    
     }
 
     @Override
-    public MoviePanel createMoviePanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public MoviePanel createMoviePanel() {    
+        return null;   
     }
 
     @Override
-    public SeatPanel creatSeatPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public SeatPanel creatSeatPanel() {    
+        return null;   
     }
 
     @Override
     public PayPanel creatPayPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        return null;   
     }
     
 }

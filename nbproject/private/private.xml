@@ -2,29 +2,6 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/NoticeBoardManagerController.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/View/NoticeBoardView.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/NoticeBoardController.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/View/MovieGenreManagerModeView.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/ManagerModeController.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/Pw_SearchController.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/View/NoticeBoardManagerModeView.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/View/Pw_SearchView.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/MovieGenreDto.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Model/NoticeBoardDao.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/MainController.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Model/PwSearchDao.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/LoginController.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/View/MembershipManagerModeView.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Model/MovieGenreDao.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/View/FirstView.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Model/NoticeBoardManagerDao.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Model/ProfileManagerModeDao.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/MouseLisstenerController.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/LoginDto.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/Controller/MovieGenreController.java</file>
-            <file>file:/C:/Users/Admin/OneDrive/바탕%20화면/MovieTicketing/src/View/MembershipView.java</file>
-        </group>
+        <group/>
     </open-files>
 </project-private>

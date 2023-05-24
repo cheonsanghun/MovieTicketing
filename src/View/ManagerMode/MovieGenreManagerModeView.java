@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package View;
+package View.ManagerMode;
 
 import Controller.LoginDto;
 import Controller.ManagerModeController;
@@ -43,6 +43,7 @@ public class MovieGenreManagerModeView extends JFrame implements ActionListener,
     JTextField genre, movie;
 
     MovieGenreManagerModeView() {
+     
         //관리자화면 프레임 gui 
         p = new JPanel();
         p.setLayout(null);
@@ -55,14 +56,20 @@ public class MovieGenreManagerModeView extends JFrame implements ActionListener,
         insert = new JButton("추가하기");
         insert.setLayout(null);
         insert.setBounds(210, 20, 150, 40);
+        insert.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+        insert.setBackground(Color.white);
 
         delete = new JButton("삭제하기");
         delete.setLayout(null);
         delete.setBounds(410, 20, 150, 40);
+        delete.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+        delete.setBackground(Color.white);
 
         back = new JButton("뒤로가기");
         back.setLayout(null);
         back.setBounds(686, 431, 100, 30);
+        back.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+        back.setBackground(Color.white);
 
         label1 = new JLabel("장르 : ");
         label1.setLayout(null);
@@ -104,6 +111,7 @@ public class MovieGenreManagerModeView extends JFrame implements ActionListener,
             }
         };
         table = new JTable(dft);
+        MovieGenreController controller = new MovieGenreController(dft, table);
         // 스크롤 생성
         JScrollPane pane = new JScrollPane(table);
 
@@ -125,7 +133,7 @@ public class MovieGenreManagerModeView extends JFrame implements ActionListener,
         back.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                new FirstView();
+                ManagerModeSelectView mmv = new ManagerModeSelectView();
                 setVisible(false);
             }
         });
@@ -133,13 +141,14 @@ public class MovieGenreManagerModeView extends JFrame implements ActionListener,
 
             public void actionPerformed(ActionEvent e) {
                 if (e.getActionCommand().equals("add")) {
-                    dft.setRowCount(0);
-                    showMembers();
+
                     String g_name = genre.getText();
                     String m_name = movie.getText();
-
-                    MovieGenreController mc = new MovieGenreController();
-                    mc.addAction(m_name, g_name);
+                    
+                   
+                    controller.addAction(m_name, g_name);
+                    dft.setRowCount(0);
+                    showMembers();
                 }
             }
         });
@@ -176,9 +185,11 @@ public class MovieGenreManagerModeView extends JFrame implements ActionListener,
 
     //회원목록 전체 출력
     public void showMembers() {
-        companys = new MovieGenreDao().getList();
+        MovieGenreDao dao = new MovieGenreDao();
+        companys = dao.getList();
+        dft.setRowCount(0);
         for (MovieGenreDto tmp : companys) {
-            Object[] row = {tmp.getGenre(), tmp.getMovie(),};
+            Object[] row = {tmp.getGenre(), tmp.getMovie()};
             dft.addRow(row);
         }
     }
@@ -213,9 +224,9 @@ public class MovieGenreManagerModeView extends JFrame implements ActionListener,
         }
 
     }
-    
+
     public void actionPerformed(ActionEvent e) {
 
     }
-    
+
 }

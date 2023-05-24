@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package View;
+package View.Pw_Search;
 
 import Controller.Pw_SearchController;
 import Controller.LoginDto;
@@ -22,7 +22,7 @@ import Model.PwSearchDao;
  *
  * @author Admin
  */
-public class Pw_SearchView extends JFrame  implements ActionListener {
+public class Pw_SearchView extends JFrame implements ActionListener {
 
     private PwSearchDao pwsearchdao;
     JPanel p;
@@ -30,7 +30,7 @@ public class Pw_SearchView extends JFrame  implements ActionListener {
     JTextField id, name;
     JButton b1, b2;
     boolean isSuccess;
-     
+
     public Pw_SearchView() {
         p = new JPanel();
         p.setLayout(null);
@@ -77,9 +77,22 @@ public class Pw_SearchView extends JFrame  implements ActionListener {
         p.add(b2);
         add(p);
 
-        b1.addActionListener( this);
+        b1.addActionListener(this);
         b1.setActionCommand("add");
 
+        b1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (e.getActionCommand().equals("add")) {
+
+                    String uid = id.getText();
+                    String uname = name.getText();
+                    Pw_SearchController psc = new Pw_SearchController();
+                    psc.addAction(uid, uname);
+                }
+
+            }
+        });
         b2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -90,16 +103,8 @@ public class Pw_SearchView extends JFrame  implements ActionListener {
         setVisible(true);
     }
 
-    public void actionPerformed(ActionEvent e) { // 버튼 클릭시에 발동되는 메소드
-        if (e.getActionCommand().equals("add")) {
-         
-             Pw_SearchController psc =  new Pw_SearchController();
-             String uid=id.getText();
-             String uname=name.getText();
-            psc.addAction(uid,uname);
-        }
+    @Override
+    public void actionPerformed(ActionEvent e) {
+
     }
-
- 
-
 }

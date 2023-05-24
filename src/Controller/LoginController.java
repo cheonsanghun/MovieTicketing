@@ -10,7 +10,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Model.Factory.TheaterPanel;
 import DbConnect.DbConnect;
-import View.LoginSuccessView;
+import View.Login.LoginSuccessView;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

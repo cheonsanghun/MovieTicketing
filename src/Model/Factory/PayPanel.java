@@ -21,13 +21,14 @@ import javax.swing.*;
  * @author USER
  */
 public class PayPanel extends JPanel {
+
     private JLabel titleLabel;
     private JPanel seatsPanel;
     private JButton backButton, addButton;
     private String cardnumber;
     private int s_row, s_col, theaterid, genreid, movieid;
-    JPanel p;
-
+    JPanel PayPanel;
+    JFrame frame;
     private String theater;
     private String genre;
     private String movie;
@@ -45,41 +46,62 @@ public class PayPanel extends JPanel {
             + "WHERE t.t_name = ? AND g.g_name = ? AND m.m_name = ?";
 
     public PayPanel(String theaterName, String genreName, String movieName, String seatMarking) {
+        PayPanel = new JPanel();
+        setLayout(null);
+        setSize(800, 500);
+        setBackground(Color.white);
+
+        titleLabel = new JLabel("결제 화면");
+        titleLabel.setLayout(null);
+        titleLabel.setBounds(335, 85, 200, 40);
+        titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 25));
+
         this.theater = theaterName;
         this.genre = genreName;
         this.movie = movieName;
         this.seatMarking = seatMarking;
 
-        setLayout(null);
-
-        JPanel cardPanel = new JPanel();
-        cardPanel.setLayout(null);
-        cardPanel.setBounds(100, 150, 200, 50);
-
         card = new JTextField();
-        card.setBounds(0, 0, 200, 50);
+        card.setLayout(null);
+        card.setBounds(290, 150, 220, 40);
 
-        cardPanel.add(card);
-        add(cardPanel);
-
-        addButton = new JButton("결제");
+        addButton = new JButton("결제하기");
         addButton.setLayout(null);
-        addButton.setBounds(0, 0, 100, 50);
+        addButton.setBackground(Color.white);
+        addButton.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+        addButton.setBounds(245, 225, 125, 45);
 
+        backButton = new JButton("취소하기");
+        backButton.setLayout(null);
+        backButton.setBackground(Color.white);
+        backButton.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+        backButton.setBounds(395, 225, 125, 45);
+
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                    int result = JOptionPane.showConfirmDialog(null, "결제를 취소합니다","확인", JOptionPane.OK_CANCEL_OPTION);
+                    if (result == JOptionPane.OK_OPTION) {
+           SwingUtilities.getWindowAncestor(PayPanel.this).dispose();
+        }
+            }
+        });
+        
         addButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 savecardnumSelection();
             }
         });
-
+        
         addButton.setActionCommand("add");
-
+        add(titleLabel);
+        add(card);
         add(addButton);
+        add(backButton);
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-             PreparedStatement pstmt = conn.prepareStatement(SELECT_Pay)) {
-             pstmt.setString(1, theater);
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS); PreparedStatement pstmt = conn.prepareStatement(SELECT_Pay)) {
+            pstmt.setString(1, theater);
             pstmt.setString(2, genre);
             pstmt.setString(3, movie);
 
@@ -100,9 +122,8 @@ public class PayPanel extends JPanel {
     private void savecardnumSelection() {
         String cardnumber = card.getText();
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-             PreparedStatement pstmt = conn.prepareStatement("UPDATE seat SET cardnum = '%s' WHERE s.s_row = seatMarking and s.s_col = seatMarking and s.t_id = theaterName and s.g_id = genreName and s.m_id = movieName")) {
-            
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS); PreparedStatement pstmt = conn.prepareStatement("UPDATE seat SET cardnum = '%s' WHERE s.s_row = seatMarking and s.s_col = seatMarking and s.t_id = theaterName and s.g_id = genreName and s.m_id = movieName")) {
+
             pstmt.setString(1, cardnumber);
             pstmt.setInt(2, s_row);
             pstmt.setInt(3, s_col);

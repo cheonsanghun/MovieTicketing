@@ -5,8 +5,10 @@
 package Model.Factory;
 
 import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;
@@ -35,47 +37,64 @@ public abstract class MoviePanel extends JPanel implements MovieFactory {
     String dbDriver = "org.mariadb.jdbc.Driver";
     String dbUrl = "jdbc:mariadb://127.0.0.1:3306/test";
     String dbUser = "root";
-    String dbPassword = "12341234";    
+    String dbPassword = "12341234";
     Connection dbconn = null;
-    
+
     private static final String DB_URL = "jdbc:mariadb://localhost:3306/test";
     private static final String DB_USER = "root";
     private static final String DB_PASS = "12341234";
 
-    private static final String SELECT_MOVIES = "SELECT DISTINCT m.m_name  " +
-             "FROM movie m " +
-             "JOIN theater t ON m.t_id = t.t_id " +
-             "JOIN genre g ON m.g_id = g.g_id " +
-             "JOIN date d ON m.date_id = d.date_id " +
-             "WHERE t.t_name = '%s' and g.g_name = '%s'";
+    private static final String SELECT_MOVIES = "SELECT DISTINCT m.m_name  "
+            + "FROM movie m "
+            + "JOIN theater t ON m.t_id = t.t_id "
+            + "JOIN genre g ON m.g_id = g.g_id "
+            + "JOIN date d ON m.date_id = d.date_id "
+            + "WHERE t.t_name = '%s' and g.g_name = '%s'";
 
     private JLabel titleLabel;
     private JList<String> movieList;
+     private JComboBox<String> moiveComboBox;
+    DefaultListModel<String> movieListModel;
     String theater;
     String genre;
-    
+    ArrayList<String> genreNames = new ArrayList<>();
+
     public MoviePanel(String theaterName, String genreName) {
+         setSize(800, 500);
+        setLayout(null);
+        setBackground(Color.white);
+        
         theater = theaterName;
         genre = genreName;
-        
-        titleLabel = new JLabel("영화를 선택하세요:");
+
+        titleLabel = new JLabel("영화를 선택하세요 !");
+        titleLabel.setLayout(null);
+        titleLabel.setBounds(300, 5, 200, 40);
+        titleLabel.setFont(titleLabel.getFont().deriveFont(Font.BOLD, 20));
+
         //ArrayList<String> movieNames = new ArrayList<>();
-        DefaultListModel<String> movieListModel = new DefaultListModel<>();
-        
-        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS);
-             Statement stmt = conn.createStatement();
-             ResultSet rs = stmt.executeQuery(String.format(SELECT_MOVIES,theater, genre))) {
+        ArrayList<String> movieNames = new ArrayList<>();
+        movieListModel = new DefaultListModel<>();
+        movieList = new JList<>(movieListModel);
+        movieList.setLayout(null);
+        movieList.setBounds(280, 50, 250, 250);
+
+        try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery(String.format(SELECT_MOVIES, theater, genre))) {
             while (rs.next()) {
                 //movieNames.add(rs.getString("t.t_name, g.g_name, m.m_name"));
-                 String movieTitle = /*rs.getString("t.t_name") + ", " + rs.getString("g.g_name") + ", " + */rs.getString("m.m_name")/* + ", "+rs.getString("d.date_date")*/;
-                 movieListModel.addElement(movieTitle);
+                String movieTitle = /*rs.getString("t.t_name") + ", " + rs.getString("g.g_name") + ", " + */ rs.getString("m.m_name")/* + ", "+rs.getString("d.date_date")*/;
+                movieListModel.addElement(movieTitle);
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
-        
+
         JButton backButton = new JButton("뒤로 가기");
-        backButton.setBounds(0, 320, 100, 30);
+        backButton.setLayout(null);
+        backButton.setBounds(290, 300, 150, 50);
+        backButton.setBackground(Color.white);
+        backButton.setFont(new Font("맑은 고딕", Font.BOLD, 14));
+
         backButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 Container parent = MoviePanel.this.getParent();
@@ -91,45 +110,41 @@ public abstract class MoviePanel extends JPanel implements MovieFactory {
                 parent.repaint();
             }
         });
-        add(backButton);
-        
 
-        movieList = new JList<>(movieListModel);
+
         movieList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        
-        
+
         movieList.addListSelectionListener(new ListSelectionListener() {
             public void valueChanged(ListSelectionEvent e) {
                 if (!e.getValueIsAdjusting()) {
                     String selectedMovie = (String) movieList.getSelectedValue();
                     String selectdeTheater = theater;
                     String selectedGenre = genre;
-                    SelectedSeatPanel  seatPanel = new SelectedSeatPanel(selectdeTheater,selectedGenre,selectedMovie);
+                    SelectedSeatPanel seatPanel = new SelectedSeatPanel(selectdeTheater, selectedGenre, selectedMovie);
 
-                    
-            Container parent = MoviePanel.this.getParent();
-            Component currentPanel = parent.getComponent(0);
-            parent.remove(currentPanel);
-            parent.add(seatPanel);
+                    Container parent = MoviePanel.this.getParent();
+                    Component currentPanel = parent.getComponent(0);
+                    parent.remove(currentPanel);
+                    parent.add(seatPanel);
 
-            
-            parent.revalidate();
-            parent.repaint();
+                    parent.revalidate();
+                    parent.repaint();
                 }
             }
         });
-        
         add(titleLabel);
+        add(backButton);
         add(new JScrollPane(movieList));
+        add(movieList);
+      
     }
 
-    
     public void valueChanged(ListSelectionEvent e) {
         if (e.getSource() == movieList) {
             String selectedMovie = (String) movieList.getSelectedValue();
             String selectdeTheater = theater;
             String selectedGenre = genre;
-            SelectedSeatPanel  seatPanel = new SelectedSeatPanel(selectdeTheater,selectedGenre,selectedMovie);
+            SelectedSeatPanel seatPanel = new SelectedSeatPanel(selectdeTheater, selectedGenre, selectedMovie);
 
             Container parent = this.getParent();
             parent.add(seatPanel, "Seat");
@@ -141,7 +156,8 @@ public abstract class MoviePanel extends JPanel implements MovieFactory {
             cl.show(this.getParent(), "Seat");*/
         }
     }
-     @Override
+
+    @Override
     public TheaterPanel createTheaterPanel() {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
