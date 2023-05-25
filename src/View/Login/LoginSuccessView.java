@@ -13,6 +13,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import Model.Factory.TheaterPanel;
+import View.MyPageView.MyPageView;
 
 /**
  *
@@ -21,7 +22,7 @@ import Model.Factory.TheaterPanel;
 public class LoginSuccessView extends JFrame {
 
     JPanel j;
-    JButton movie, noticeboard, back;
+    JButton movie, noticeboard, back, reserverok;
     FirstView home;
     public LoginSuccessView() {
         j = new JPanel();
@@ -35,18 +36,24 @@ public class LoginSuccessView extends JFrame {
         movie = new JButton("영화 예매");
         movie.setLayout(null);
         movie.setBackground(Color.white);
-        movie.setBounds(110, 150, 150, 50);
+        movie.setBounds(35, 150, 150, 50);
         
          back = new JButton("뒤로 가기");
         back.setLayout(null);
         back.setBackground(Color.white);
         back.setBounds(484, 331, 100, 30);
         
+        reserverok = new JButton("마이 페이지");
+        reserverok.setLayout(null);
+        reserverok.setBackground(Color.white);
+        reserverok.setBounds(215, 150, 150, 50);
+        
         noticeboard = new JButton("게시판 이동");
         noticeboard.setLayout(null);
         noticeboard.setBackground(Color.white);
-        noticeboard.setBounds(315, 150, 150, 50);
+        noticeboard.setBounds(395, 150, 150, 50);
         
+        j.add(reserverok);
         j.add(back);
         j.add(movie);
         j.add(noticeboard);
@@ -58,6 +65,13 @@ public class LoginSuccessView extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 setVisible(false);
                 new NoticeBoardView();
+            }
+        });
+        reserverok.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setVisible(false);
+                new MyPageView();
             }
         });
         movie.addActionListener(new ActionListener() {
