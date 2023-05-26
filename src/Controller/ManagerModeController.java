@@ -46,7 +46,15 @@ public class ManagerModeController {
                 .build();
         //작업의 성공여부를 리턴 받는다. 
         boolean isSuccess = new ProfileManagerModeDao().insert(dto);
+          if (id.contains(" ") ||name.contains(" ") || age.contains(" ")  || pw.contains(" ")
+            || phone.contains(" ") || mail.contains(" ")) {
+        JOptionPane.showMessageDialog(null, "입력 값에 공백이 포함되어 있습니다.", "입력 오류", JOptionPane.DEFAULT_OPTION);
+        return; // 입력에 공백이 포함되어 있으면 메서드 실행 중단
+    }
 
+        if (name.length() == 0 || age.length() == 0 || id.length() == 0 || pw.length() == 0 || phone.length() == 0 || mail.length() == 0 || address.length() == 0) {
+            JOptionPane.showMessageDialog(null, "빈칸을 입력해주세요.");
+        } else {
         if (isSuccess) {
             JOptionPane.showMessageDialog(null, "저장 했습니다.");
             //행의 갯수를 강제로 0 로 만들고 
@@ -54,6 +62,7 @@ public class ManagerModeController {
             //다시 출력하기
         } else {
             JOptionPane.showMessageDialog(null, "저장 실패! 중복된 아이디가 있습니다.");
+        }
         }
 
     }

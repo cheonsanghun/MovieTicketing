@@ -23,8 +23,8 @@ import javax.swing.event.ListSelectionListener;
 
 public class TheaterPanel extends JPanel implements MovieFactory, ActionListener {
 
-    private static final String DB_URL = "jdbc:mariadb://localhost:3306/test";
-    private static final String DB_USER = "root";
+    private static final String DB_URL = "jdbc:mariadb://113.198.234.132:9090/moviedb";
+    private static final String DB_USER = "jbg";
     private static final String DB_PASS = "12341234";
 
     private static final String SELECT_THEATERS = "SELECT * FROM theater";

@@ -5,7 +5,7 @@
 package View;
 
 import View.Login.LoginFrameView;
-import View.ManagerMode.ManagerLoginView;
+import Model.Proxy.ManagerLoginView;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;

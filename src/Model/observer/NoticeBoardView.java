@@ -38,9 +38,9 @@ public class NoticeBoardView {
     private Reviewobserver reviewObserver;
     private NoticeBoardController controller;
     
-    final String DB_IP = "localhost";
-		final String DB_PORT = "3306";
-		final String DB_NAME = "test";
+    final String DB_IP = "113.198.234.132";
+		final String DB_PORT = "9090";
+		final String DB_NAME = "moviedb";
 		final String DB_URL = 
 				"jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
     

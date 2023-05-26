@@ -5,6 +5,7 @@
 package Model.Factory;
 
 import View.Login.LoginFrameView;
+import View.Login.LoginSuccessView;
 import java.awt.*;
 import java.awt.Container;
 import java.awt.Panel;
@@ -40,8 +41,8 @@ public class PayPanel extends JPanel {
     private String seatMarking;
     private JTextField card;
 
-    private static final String DB_URL = "jdbc:mariadb://localhost:3306/test";
-    private static final String DB_USER = "root";
+    private static final String DB_URL = "jdbc:mariadb://113.198.234.132:9090/moviedb";
+    private static final String DB_USER = "jbg";
     private static final String DB_PASS = "12341234";
 
     private static final String SELECT_Pay = "SELECT * FROM seat s "
@@ -120,6 +121,7 @@ public class PayPanel extends JPanel {
             if (rows > 0) {
                 JOptionPane.showMessageDialog(null, "성공적으로 결제가 완료되었습니다.");
                 UpdatePro(cardnumber);
+                new LoginSuccessView();
             } if( rows<0) {
                   JOptionPane.showMessageDialog(null, "결제에 실패하였습니다..");
             }

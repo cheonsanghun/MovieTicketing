@@ -25,7 +25,7 @@ public class ManagerModeSelectView extends JFrame {
     JPanel p;
     JButton b1, b2, b3, back;
 
-    ManagerModeSelectView() {
+    public ManagerModeSelectView() {
         p = new JPanel();
         p.setLayout(null);
         setSize(600, 150);

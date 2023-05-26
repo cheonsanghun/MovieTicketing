@@ -109,12 +109,12 @@ public class LoginController {
                 }
                 //db에 있는 데이터로 db드라이버 연결 후 데이터 일치하는지 확인여부
                 final String driver = "org.mariadb.jdbc.Driver";
-                final String DB_IP = "localhost";
-                final String DB_PORT = "3306";
-                final String DB_NAME = "test";
+                final String DB_IP = "113.198.234.132";
+                final String DB_PORT = "9090";
+                final String DB_NAME = "moviedb";
                 final String DB_URL
                         = "jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
-                conn = DriverManager.getConnection(DB_URL, "root", "12341234");
+                conn = DriverManager.getConnection(DB_URL, "jbg", "12341234");
 
                 String sql = String.format("select pw from profile where id ='%s' and pw = '%s'", uid, upw);
                 stmt = conn.prepareStatement(sql);

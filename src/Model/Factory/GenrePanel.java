@@ -38,13 +38,13 @@ import javax.swing.event.ListSelectionListener;
 public abstract class GenrePanel extends JPanel implements MovieFactory {
 
     String dbDriver = "org.mariadb.jdbc.Driver";
-    String dbUrl = "jdbc:mariadb://127.0.0.1:3306/test";
-    String dbUser = "root";
+    String dbUrl = "jdbc:mariadb://113.198.234.132:9090/moviedb";
+    String dbUser = "jbg";
     String dbPassword = "12341234";
     Connection dbconn = null;
     JPanel p;
-    private static final String DB_URL = "jdbc:mariadb://localhost:3306/test";
-    private static final String DB_USER = "root";
+    private static final String DB_URL = "jdbc:mariadb://113.198.234.132:9090/moviedb";
+    private static final String DB_USER = "jbg";
     private static final String DB_PASS = "12341234";
 
     private static final String SELECT_GENRES = "SELECT DISTINCT genre.g_name FROM movie INNER JOIN genre ON movie.g_id = genre.g_id INNER JOIN theater ON movie.t_id = theater.t_id WHERE theater.t_name = '%s'";

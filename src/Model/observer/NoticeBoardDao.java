@@ -34,7 +34,7 @@ public class NoticeBoardDao extends JPanel {
     
     private void deleteFromDatabase(String rate, String review) {
         try {
-            Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306", "root", "12341234");
+            Connection conn = DriverManager.getConnection("jdbc:mariadb://113.198.234.132:9090", "jbg", "12341234");
             PreparedStatement stmt = conn.prepareStatement("DELETE FROM review WHERE rate = ? AND review = ?");
             stmt.setString(1, rate);
             stmt.setString(2, review);
@@ -55,7 +55,7 @@ public class NoticeBoardDao extends JPanel {
     private void loadDataFromDatabase() {
         try {
             // 데이터베이스 연결 설정
-            Connection conn = DriverManager.getConnection("jdbc:mariadb://localhost:3306", "root", "12341234");
+            Connection conn = DriverManager.getConnection("jdbc:mariadb://113.198.234.132:9090", "jbg", "12341234");
             PreparedStatement stmt = conn.prepareStatement("SELECT rate, review FROM review");
 
             // 쿼리 실행 및 결과 가져오기

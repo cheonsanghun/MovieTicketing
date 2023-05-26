@@ -21,9 +21,9 @@ import javax.swing.JTextArea;
  */
 public class NoticeBoardController {
 
-    final String DB_IP = "localhost";
-    final String DB_PORT = "3306";
-    final String DB_NAME = "test";
+    final String DB_IP = "113.198.234.132";
+    final String DB_PORT = "9090";
+    final String DB_NAME = "moviedb";
     final String DB_URL
             = "jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
     public ReviewData reviewData;
@@ -39,7 +39,7 @@ public class NoticeBoardController {
     }
 
     public void saveReview(String rate, String review) {
-        try (Connection conn = DriverManager.getConnection(DB_URL, "root", "12341234"); Statement stmt = conn.createStatement()) {
+        try (Connection conn = DriverManager.getConnection(DB_URL, "jbg", "12341234"); Statement stmt = conn.createStatement()) {
             // INSERT ì¿¼ë¦¬ ?¤í??
             String sql = "INSERT INTO review (rate, review) VALUES ('" + rate + "', '" + review + "')";
             stmt.executeUpdate(sql);
@@ -55,7 +55,7 @@ public class NoticeBoardController {
         JTextArea txtlog = noticeBoard.getTxtlog();
         txtlog.setText("");
 
-        try (Connection conn = DriverManager.getConnection(DB_URL, "root", "12341234"); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT rate, review FROM review")) {
+        try (Connection conn = DriverManager.getConnection(DB_URL, "jbg", "12341234"); Statement stmt = conn.createStatement(); ResultSet rs = stmt.executeQuery("SELECT rate, review FROM review")) {
             while (rs.next()) {
                 String rating = rs.getString("rate");
                 String review = rs.getString("review");

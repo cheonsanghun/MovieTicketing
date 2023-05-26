@@ -182,17 +182,23 @@ public class MembershipView extends JFrame implements ActionListener {
         String uphone = phone.getText().trim();
         String umail = mail.getText().trim();
         String uaddress = address.getText().trim();
-
-        if (uname.isEmpty() || uage.isEmpty() || uid.isEmpty() || upw.isEmpty()
-                || upwreconfirm.isEmpty() || uphone.isEmpty() || umail.isEmpty() || uaddress.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "입력 방식이 옳지 않습니다.", "입력 오류", JOptionPane.DEFAULT_OPTION);
-            return; // 입력이 올바르지 않으면 메서드 실행 중단
-        }
-        if (uname.contains(" ") || uage.contains(" ") || uid.contains(" ") || upw.contains(" ")
-                || upwreconfirm.contains(" ") || uphone.contains(" ") || umail.contains(" ") ) {
-            JOptionPane.showMessageDialog(null, "입력 값에 공백이 포함되어 있습니다.", "입력 오류", JOptionPane.DEFAULT_OPTION);
-            return; // 입력에 공백이 포함되어 있으면 메서드 실행 중단
-        }
+         if ( upw.replaceAll(" ", "").equals("") ||
+                 uname.replaceAll(" ", "").equals("") || uage.replaceAll(" ", "").equals("") || upwreconfirm.replaceAll(" ", "").equals("") ||
+                 uphone.replaceAll(" ", "").equals("") ||  umail.replaceAll(" ", "").equals("") ) {
+                    JOptionPane.showMessageDialog(null, "공백입니다. 입력 방식이 옳지 않습니다.", "입력 오류", JOptionPane.DEFAULT_OPTION);
+                    return;
+                }
+         
+      if (uname.trim().isEmpty() || uage.trim().isEmpty() || uid.trim().isEmpty() || upw.trim().isEmpty()
+            || upwreconfirm.trim().isEmpty() || uphone.trim().isEmpty() || umail.trim().isEmpty() || uaddress.trim().isEmpty()) {
+        JOptionPane.showMessageDialog(null, "입력 방식이 옳지 않습니다.", "입력 오류", JOptionPane.DEFAULT_OPTION);
+        return; // 입력이 올바르지 않으면 메서드 실행 중단
+    }
+    if (uname.contains(" ") || uage.contains(" ")  || upw.contains(" ")
+            || upwreconfirm.contains(" ") || uphone.contains(" ") || umail.contains(" ")) {
+        JOptionPane.showMessageDialog(null, "입력 값에 공백이 포함되어 있습니다.", "입력 오류", JOptionPane.DEFAULT_OPTION);
+        return; // 입력에 공백이 포함되어 있으면 메서드 실행 중단
+    }
 
         if (uname.length() == 0 || uage.length() == 0 || uid.length() == 0 || upw.length() == 0 || uphone.length() == 0 || umail.length() == 0 || uaddress.length() == 0) {
             JOptionPane.showMessageDialog(this, "빈칸을 입력해주세요.");
