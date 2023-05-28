@@ -15,7 +15,9 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-
+    /*
+    프로그램의 맨 처음 화면
+*/
 public class FirstView extends JFrame {
 
     JButton b1, b2;

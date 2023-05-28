@@ -5,8 +5,7 @@
 package Controller;
 
 /**
- *
- * @author kjbg4
+    // 상태패턴에 대한 State 인터페이스 클래스
  */
 public interface State {
     void execute();

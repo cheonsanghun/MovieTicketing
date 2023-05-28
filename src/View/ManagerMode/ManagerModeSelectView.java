@@ -6,7 +6,7 @@ package View.ManagerMode;
 
 import View.ManagerMode.NoticeBoardManagerModeView;
 import View.ManagerMode.MovieGenreManagerModeView;
-import Controller.MainController;
+import Controller.Main;
 import View.FirstView;
 import java.awt.Color;
 import java.awt.Font;
@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author kjbg4
+ * 관리자 로그인에 성공 했을 때 각각의 모드를 들어갈 수 있게 해주는 선택 화면
  */
 public class ManagerModeSelectView extends JFrame {
 

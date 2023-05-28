@@ -18,9 +18,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import Model.PwSearchDao;
 
-/**
+/*
  *
- * @author Admin
+ * 비밀번호 찾기 화면
  */
 public class Pw_SearchView extends JFrame implements ActionListener {
 

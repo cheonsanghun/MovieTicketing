@@ -25,8 +25,11 @@ import javax.swing.*;
 import java.awt.*;
 import Model.observer.Observer;
 import View.Login.LoginSuccessView;
-
+/*
+ 사용자가 게시판을 사용할 수 있는 화면
+*/
 public class NoticeBoardView {
+    //필드
     String array[]={"1","2","3","4","5"};
     JComboBox combox = new JComboBox(array);
     JButton btn1=new JButton("확인");
@@ -45,6 +48,7 @@ public class NoticeBoardView {
 				"jdbc:mariadb://" + DB_IP + ":" + DB_PORT + "/" + DB_NAME;
     
     public NoticeBoardView(){
+        //GUI 화면
           controller = new NoticeBoardController(this);
         final JFrame frame=new JFrame("게시판"); //
         frame.setSize(800, 500); // 
@@ -88,6 +92,7 @@ public class NoticeBoardView {
         reviewObserver = new Reviewobserver(txtlog);
         reviewData.registerObserver((Observer) reviewObserver);
         
+        // 확인 버튼을 클릭했을 때 발생하는 이벤트
         btn1.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -96,6 +101,7 @@ public class NoticeBoardView {
                 
                 if(review.isEmpty()) {
                 JOptionPane.showMessageDialog(frame, "내용을 입력하세요.","경고",JOptionPane.WARNING_MESSAGE);
+                    System.err.println("enter text plz");
                 }else {
                       
                     reviewData.setMeasurements(rate, review);
@@ -105,7 +111,7 @@ public class NoticeBoardView {
             }
         });
 
-     
+        // 게시글 전체를 보고 싶을 때 버튼을 클릭하면 발생하는 이벤트
         btn2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

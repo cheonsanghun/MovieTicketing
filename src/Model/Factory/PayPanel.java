@@ -27,7 +27,9 @@ public class PayPanel extends JPanel {
     private String uid, upw;
     private static String cardnumber;
     private static String id, pw;
-
+private int seatR;
+    private int seatC;
+    
     private JLabel titleLabel, cardnumber1;
     private JPanel seatsPanel;
     private JButton backButton, addButton;
@@ -41,6 +43,12 @@ public class PayPanel extends JPanel {
     private String seatMarking;
     private JTextField card;
 
+    String dbDriver = "org.mariadb.jdbc.Driver";
+    String dbUrl = "jdbc:mariadb://113.198.234.132:9090/moviedb";
+    String dbUser = "jbg";
+    String dbPassword = "12341234";
+    Connection dbconn = null;
+    
     private static final String DB_URL = "jdbc:mariadb://113.198.234.132:9090/moviedb";
     private static final String DB_USER = "jbg";
     private static final String DB_PASS = "12341234";
@@ -49,9 +57,10 @@ public class PayPanel extends JPanel {
             + "JOIN theater t ON t.t_id = s.t_id "
             + "JOIN genre g ON g.g_id = s.g_id "
             + "JOIN movie m ON m.m_id = s.m_id "
-            + "WHERE t.t_name = ? AND g.g_name = ? AND m.m_name = ?";
+            + "WHERE t.t_name = ? AND g.g_name = ? AND m.m_name = ? AND s.s_row = ? AND s.s_col = ?";
 
-    public PayPanel(String theaterName, String genreName, String movieName, String seatMarking) {
+    public PayPanel(String theaterName, String genreName, String movieName,int seatRow , int seatCol) {
+        
         PayPanel = new JPanel();
         setLayout(null);
         setSize(800, 500);
@@ -70,8 +79,9 @@ public class PayPanel extends JPanel {
         this.theater = theaterName;
         this.genre = genreName;
         this.movie = movieName;
-        this.seatMarking = seatMarking;
-
+        this.seatR = seatRow;
+        this.seatC = seatCol;
+        
         card = new JTextField();
         card.setLayout(null);
         card.setBounds(290, 150, 220, 40);
@@ -144,19 +154,23 @@ public class PayPanel extends JPanel {
             pstmt.setString(1, theater);
             pstmt.setString(2, genre);
             pstmt.setString(3, movie);
-
+            pstmt.setInt(4, seatR);
+            pstmt.setInt(5, seatC);
+            
             ResultSet rs = pstmt.executeQuery();
             if (rs.next()) {
-                s_row = rs.getInt("s.s_row");
-                s_col = rs.getInt("s.s_col");
-                theaterid = rs.getInt("s.t_id");
-                genreid = rs.getInt("s.g_id");
-                movieid = rs.getInt("s.m_id");
-                cardnumber = rs.getString("s.cardnum");
+                s_row = rs.getInt("s_row");
+                s_col = rs.getInt("s_col");
+                theaterid = rs.getInt("t_id");
+                genreid = rs.getInt("g_id");
+                movieid = rs.getInt("m_id");
+                cardnumber = rs.getString("cardnum");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+                        System.out.println("결제 화면");
+
     }
 
     private void savecardnumSelection() {

@@ -4,12 +4,12 @@
  */
 package Controller;
 
-/**
- *
- * @author kjbg4
+/*
+    마이페이지에 대한 캡슐화
+    빌더 패턴 적용
  */
 public class MyPageDto {
-
+    //필드
     private int s_row;
     private int s_col;
     private int t_id;
@@ -17,6 +17,7 @@ public class MyPageDto {
     private int m_id;
     private int cardnum;
 
+    //getter
     public int getS_row() {
         return s_row;
     }

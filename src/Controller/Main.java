@@ -11,10 +11,10 @@ import View.FirstView;
  *
  * @author Admin
  */
-public class MainController {
+public class Main {
 
     /**
-     * @param args the command line arguments
+     * 맨 처음 시작 화면
      */
     public static void main(String[] args) {
 

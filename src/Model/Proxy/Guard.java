@@ -6,7 +6,7 @@ package Model.Proxy;
 
 /**
  *
- * @author kjbg4
+ * 프록시 패턴
  */
 public interface Guard {
     boolean check(String input);

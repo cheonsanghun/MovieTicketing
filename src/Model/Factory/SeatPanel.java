@@ -34,6 +34,9 @@ public class SeatPanel extends JPanel {
     private JButton backButton;
     private JButton paymentButton;
 
+        private String s_rowValue,s_colValue;
+
+    
     private String theater;
     private String genre;
     private String movie;
@@ -51,7 +54,7 @@ public class SeatPanel extends JPanel {
     String dbUser = "jbg";
     String dbPassword = "12341234";
     Connection dbconn = null;
-
+    
     private static final String DB_URL = "jdbc:mariadb://113.198.234.132:9090/moviedb";
     private static final String DB_USER = "jbg";
     private static final String DB_PASS = "12341234";
@@ -136,7 +139,11 @@ public class SeatPanel extends JPanel {
                 g_id = genre;
                 m_id = movie;
 
-                String SeatNum = rs.getString("s.s_row") + " , " + rs.getString("s.s_col");
+                s_rowValue = rs.getString("s.s_row");
+                s_colValue = rs.getString("s.s_col");
+
+                String SeatNum = s_rowValue + " , " + s_colValue;
+                
                 seats.addElement(SeatNum);
             }
         } catch (SQLException ex) {
@@ -157,8 +164,9 @@ public class SeatPanel extends JPanel {
                         String selectdeTheater = theater;
                         String selectedGenre = genre;
                         String selectedMovie = movie;
-                        String selectedSeat = SELECT_SEATS;
-                        SelectedPayPanel PayPanel = new SelectedPayPanel(selectdeTheater, selectedGenre, selectedMovie, selectedSeat);
+                        int selectedRow = s_row;
+                        int selectedCol = s_col;                        
+                        SelectedPayPanel PayPanel = new SelectedPayPanel(selectdeTheater, selectedGenre, selectedMovie, selectedRow, selectedCol);
                         Container parent = SeatPanel.this.getParent();
                         Component currentPanel = parent.getComponent(0);
                         parent.remove(currentPanel);
@@ -170,12 +178,11 @@ public class SeatPanel extends JPanel {
                 }
             }
         });
+                System.out.println("자리 선택 화면");
 
     }
 
-    SeatPanel() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
+    
 
     private boolean isSeatAlreadyReserved(int row, int col, int theaterid, int genreid, int movieid) {
         try (Connection conn = DriverManager.getConnection(DB_URL, DB_USER, DB_PASS); PreparedStatement stmt = conn.prepareStatement("SELECT * FROM seat WHERE s_row = ? AND s_col = ? AND t_id = ? AND g_id = ? AND m_id = ?")) {

@@ -6,7 +6,7 @@ package View.ManagerMode;
  */
 import Controller.LoginDto;
 import Controller.NoticeBoardManagerController;
-import DbConnect.DbConnect;
+import DbConnect.Singleton.DbConnect;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.Font;
@@ -26,8 +26,11 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+/*
+ 게시판 관리 화면
+*/
 public class NoticeBoardManagerModeView extends JPanel {
-
+    //스윙 필드
     JButton delete = new JButton("삭제");
 
     JTextField t1 = new JTextField(10);
@@ -41,6 +44,7 @@ public class NoticeBoardManagerModeView extends JPanel {
     JButton back;
 
     public NoticeBoardManagerModeView() {
+        //gui 
         controller = new NoticeBoardManagerController();
         JFrame frame = new JFrame("게시판 관리");
         frame.setSize(600, 400);
@@ -109,7 +113,7 @@ public class NoticeBoardManagerModeView extends JPanel {
         loadDataFromDatabase();
 
     }
-
+    
     private void loadDataFromDatabase() {
         dft.setRowCount(0); // Clear the table data
         Object[][] data = controller.getReviewData();

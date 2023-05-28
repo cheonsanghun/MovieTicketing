@@ -1,8 +1,12 @@
-package DbConnect;
+package DbConnect.Singleton;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-
+   
+/*
+    데이트베이스 연동을 위한 클래스
+    싱글톤 패턴 적용
+*/
 public class DbConnect {
     public static DbConnect instance;
     public Connection conn;
@@ -41,9 +45,6 @@ public class DbConnect {
 
     public Connection getConn() {
         return conn;
-    }
-    public static void main(String[] args) {
-        new DbConnect();
     }
 
 }

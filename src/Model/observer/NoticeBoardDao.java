@@ -27,6 +27,9 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
+/*
+    게시판 리뷰 및 평점 등록에 대한 DB 저장 쿼리문
+*/
 public class NoticeBoardDao extends JPanel {
 
     DefaultTableModel dft;

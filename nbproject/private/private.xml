@@ -2,6 +2,45 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-        <group/>
+        <group>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/View/Login/LoginSuccessView.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/SeatPanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/NoticeBoardManagerDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/ProfileManagerModeDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/View/Login/LoginFrameView.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/MovieFactory.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/View/ManagerMode/MembershipManagerModeView.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Controller/LoginController.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/GenrePanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/observer/Reviewdata.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/View/FirstView.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/SelectedMoviePanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Proxy/Guard.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/observer/Subject.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/View/MyPageView/MyPageView.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/observer/Observer.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Proxy/ManagerLoginView.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Controller/MainController.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Controller/MovieGenreDto.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/observer/NoticeBoardDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/View/ManagerMode/ManagerModeSelectView.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/DbConnect/DbConnect.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Proxy/GuardProxy.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/observer/Reviewobserver.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Controller/MyPageDto.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/MyPageDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Controller/LoginDto.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/PayPanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/TheaterPanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/SelectedGenrePanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/observer/NoticeBoardController.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/observer/NoticeBoardView.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Controller/ManagerModeController.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/MovieGenreDao.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/View/Membership/MembershipView.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/SelectedPayPanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/SelectedSeatPanel.java</file>
+            <file>file:/C:/Users/kjbg4/Desktop/MovieTicketing12/src/Model/Factory/MoviePanel.java</file>
+        </group>
     </open-files>
 </project-private>

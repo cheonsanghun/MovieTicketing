@@ -6,7 +6,7 @@ package Model;
 
 import Controller.LoginDto;
 import Controller.MyPageDto;
-import DbConnect.DbConnect;
+import DbConnect.Singleton.DbConnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

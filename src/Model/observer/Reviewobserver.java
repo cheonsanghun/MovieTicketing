@@ -8,7 +8,7 @@ package Model.observer;
 
 /**
  *
- * @author cherr
+ * 옵저버 패턴
  */
 
 import Model.observer.Observer;

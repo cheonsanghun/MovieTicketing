@@ -4,7 +4,9 @@
  */
 package Model.observer;
 
-
+/*
+ 옵저버 패턴
+*/
 public interface Observer {
 
     public void update(String rate, String review);

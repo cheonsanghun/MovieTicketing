@@ -29,11 +29,11 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
- *
+ *  영화 관리 화면
  * @author kjbg4
  */
 public class MovieGenreManagerModeView extends JFrame implements ActionListener, PropertyChangeListener {
-
+    //스윙 필드 
     JPanel p;
     JButton insert, delete, back;
     List<MovieGenreDto> companys;

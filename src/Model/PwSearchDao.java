@@ -10,11 +10,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
-import DbConnect.DbConnect;
+import DbConnect.Singleton.DbConnect;
 import java.sql.Statement;
-        /**
- *
- * @author Admin
+        /*
+        비밀번호 찾기에 대한 Dao 클래스
  */
 public class PwSearchDao {
       static private Connection conn = null;

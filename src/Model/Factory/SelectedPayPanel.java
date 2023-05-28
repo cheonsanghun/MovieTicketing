@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Model.Factory;
 
 import java.awt.event.ActionListener;
@@ -14,14 +10,16 @@ public class SelectedPayPanel extends PayPanel{
     private String selectedGenre;
     private String selectedTheater;
     private String selectedMovie;
-    private String selectedSeat;
+    private int selectedRow;
+    private int selectedCol;
     
-    public SelectedPayPanel(String theaterName, String genreName, String movieName, String seatMarking) {
-    super(theaterName, genreName, movieName, seatMarking);
+    public SelectedPayPanel(String theaterName, String genreName, String movieName, int seatRow , int seatCol) {
+    super(theaterName, genreName, movieName, seatRow,  seatCol);
     this.selectedTheater = theaterName;
     this.selectedGenre = genreName;
     this.selectedMovie = movieName;
-    this.selectedSeat = seatMarking;
-}
+    this.selectedRow = seatRow;
+    this.selectedCol = seatCol;
+    }
     
 }

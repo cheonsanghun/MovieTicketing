@@ -11,7 +11,9 @@ import java.beans.Statement;
 import java.util.List;
 import java.util.ArrayList;
 import Model.observer.Observer;
-
+/*
+  옵저버 패턴
+*/
 public class Reviewdata implements Subject {
     private List<Observer> observers;
     private String rate;

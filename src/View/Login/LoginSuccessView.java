@@ -16,7 +16,7 @@ import Model.Factory.TheaterPanel;
 import View.MyPageView.MyPageView;
 
 /**
- *
+ *  // 로그인 성공했을 때 다음 화면
  * @author Admin
  */
 public class LoginSuccessView extends JFrame {
@@ -59,7 +59,8 @@ public class LoginSuccessView extends JFrame {
         j.add(noticeboard);
         add(j);
         setVisible(true);
-
+        
+        //게시판 버튼클릭 리스너
         noticeboard.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -67,6 +68,7 @@ public class LoginSuccessView extends JFrame {
                 new NoticeBoardView();
             }
         });
+        // 예약확인 리스너
         reserverok.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -74,6 +76,7 @@ public class LoginSuccessView extends JFrame {
                 new MyPageView();
             }
         });
+        //영화 예메 시스템으로 가는 리스너
         movie.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -92,6 +95,8 @@ public class LoginSuccessView extends JFrame {
                 frame.setVisible(true);
             }
         });
+        
+        // 뒤로가기 리스너
          back.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

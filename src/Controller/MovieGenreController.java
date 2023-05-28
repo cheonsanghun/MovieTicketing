@@ -14,7 +14,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kjbg4
+ * 관리자의 영화 관리 컨트롤러
  */
 public class MovieGenreController {
 

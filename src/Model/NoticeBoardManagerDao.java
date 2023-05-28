@@ -5,7 +5,7 @@
 package Model;
 
 import Controller.LoginDto;
-import DbConnect.DbConnect;
+import DbConnect.Singleton.DbConnect;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Connection;

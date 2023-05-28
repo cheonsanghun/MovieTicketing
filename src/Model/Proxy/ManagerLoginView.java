@@ -4,7 +4,6 @@
  */
 package Model.Proxy;
 
-
 import Model.Proxy.GuardProxy;
 import View.ManagerMode.ManagerModeSelectView;
 import java.awt.Color;
@@ -37,24 +36,25 @@ import javax.swing.JPasswordField;
 
 /**
  *
- * @author Admin
+ * 맨 처음 화면에서 관리자 모드 버튼을 클릭했을 때 접근을 하기 위해 관리자 로그인 화면을 보여주는 부분
  */
-
 public class ManagerLoginView extends JFrame {
 
+    //필드
     JButton login, back;
     JPanel j;
     JLabel word, infor, infor2;
     JPasswordField pwIn;
     private GuardProxy proxy;
-    
+
     public ManagerLoginView() {
+        //gui
         setSize(500, 400);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLocationRelativeTo(null); // ??? ???? ???
         setTitle("관리자 로그인");
         setVisible(true);
-        
+
         j = new JPanel();
         j.setBackground(Color.white);
         j.setLayout(null);
@@ -91,9 +91,9 @@ public class ManagerLoginView extends JFrame {
         j.add(infor);
         j.add(infor2);
         add(j);
-        
-         proxy = new GuardProxy();
-         
+
+        proxy = new GuardProxy();
+        // 로그인 버튼을 클릭했을 때 발생하는 이벤트
         login.addActionListener(new ActionListener() {
 
             @Override
@@ -101,14 +101,13 @@ public class ManagerLoginView extends JFrame {
 
                 dispose();
 
-                
                 String input = new String(pwIn.getPassword());
 
                 if (proxy.check(input)) {
 
                     JOptionPane.showMessageDialog(null, "로그인에 성공하셨습니다", "로그인 성공!", JOptionPane.DEFAULT_OPTION);
                     setVisible(false);
-                
+
                     new ManagerModeSelectView();
 
                 } else {
@@ -125,7 +124,7 @@ public class ManagerLoginView extends JFrame {
                 }
             }
         });
-
+        // 뒤로가기 버튼을 클릭했을 때 발생하는 이벤트
         back.addActionListener(new ActionListener() {
 
             @Override
@@ -135,5 +134,5 @@ public class ManagerLoginView extends JFrame {
             }
         });
     }
-    
+
 }

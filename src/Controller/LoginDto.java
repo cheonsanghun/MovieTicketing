@@ -6,18 +6,20 @@ package Controller;
 
 /**
  *
- * @author Admin
+ * 빌더 패턴 적용
  */
 public class LoginDto {
-
+    //회원가입 및 로그인에 대한 필드
     private String name; // 이름
-    private String age;
-    private String id;
-    private String pw;
-    private String phone;
-    private String mail;
-    private String address;
-    private int cardnum;
+    private String age; //나이 
+    private String id; // 아이디
+    private String pw; //비밀번호
+    private String phone; // 휴대폰
+    private String mail; // 메일
+    private String address; // 주소
+    private int cardnum; // 카드정보
+    
+    //getter
     public String getName() {
         return name;
     }
@@ -54,7 +56,7 @@ public class LoginDto {
     public LoginDto() {
         super();
     }
-                        //빌더 패턴
+    //빌더 패턴
     private LoginDto(Builder builder) {
         super();
         this.name = builder.name;

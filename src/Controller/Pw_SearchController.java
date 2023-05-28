@@ -12,9 +12,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
-/**
- *
- * @author kjbg4
+/*
+    비밀번호 찾기 컨트롤러
  */
 public class Pw_SearchController {
 

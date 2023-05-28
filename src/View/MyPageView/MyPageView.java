@@ -26,7 +26,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kjbg4
+ * 내 예약 정보를 확인하는 마이페이지 화면
  */
 public class MyPageView extends JFrame implements PropertyChangeListener {
 
@@ -103,11 +103,6 @@ public class MyPageView extends JFrame implements PropertyChangeListener {
             }
         });
     }
-
-    public static void main(String[] args) {
-        new MyPageView();
-    }
-
     //회원목록 전체 출력
     public void showMembers() {
         mypages = new MyPageDao().getList();

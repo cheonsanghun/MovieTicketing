@@ -16,7 +16,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 /**
- *
+ *   게시판 리뷰 및 평점 컨트롤러
+ * 
  * @author kjbg4
  */
 public class NoticeBoardController {
@@ -44,6 +45,7 @@ public class NoticeBoardController {
             String sql = "INSERT INTO review (rate, review) VALUES ('" + rate + "', '" + review + "')";
             stmt.executeUpdate(sql);
             JOptionPane.showMessageDialog(null, "리뷰가 저장되었습니다.");
+            System.out.println("save reivew observer");
         } catch (SQLException ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(null, "리뷰 저장에 실패하였습니다 .");
@@ -61,6 +63,7 @@ public class NoticeBoardController {
                 String review = rs.getString("review");
                 String reviewString = "평점 : " + rating + " / 리뷰 : " + review + "\n";
                 txtlog.append(reviewString);
+                System.out.println("show all reviews observer");
             }
         } catch (SQLException ex) {
             ex.printStackTrace();

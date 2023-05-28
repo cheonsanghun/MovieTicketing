@@ -13,7 +13,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author kjbg4
+ * 회원 정보 관리 컨트롤러
  */
 public class ManagerModeController {
 
@@ -25,7 +25,7 @@ public class ManagerModeController {
     public void showMembers() {
         companys = new ProfileManagerModeDao().getList();
         for (LoginDto tmp : companys) {
-            Object[] row = {tmp.getName(), tmp.getAge(), tmp.getId(), tmp.getPw(), tmp.getPhone(), tmp.getMail(), tmp.getAddress()};
+            Object[] row = {tmp.getName(), tmp.getAge(), tmp.getId(), tmp.getPw(), tmp.getPhone(), tmp.getMail(), tmp.getAddress(),tmp.getcardnum()};
             dft.addRow(row);
         }
     }
@@ -42,7 +42,6 @@ public class ManagerModeController {
                 .setPhone(phone)
                 .setMail(mail)
                 .setAddress(address)
-                
                 .build();
         //작업의 성공여부를 리턴 받는다. 
         boolean isSuccess = new ProfileManagerModeDao().insert(dto);

@@ -10,7 +10,7 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author Admin
+ * 마우스 리스너
  */
 public class MouseLisstenerController extends MouseAdapter {
 

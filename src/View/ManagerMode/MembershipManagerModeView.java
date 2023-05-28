@@ -28,8 +28,11 @@ import Controller.MouseLisstenerController;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+/*
+       회원 정보 관리 화면
+*/
 public class MembershipManagerModeView extends JFrame implements ActionListener, PropertyChangeListener {
-
+    //스윙 필드
     JPanel p;
     JButton back, insert, delete, update;
     JTable table;
@@ -126,7 +129,8 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
         p.add(update);
         p.add(delete);
         add(p);
-
+        
+        // Defaulttable model 생성 코드
         String[] colNames = {"이름", "나이", "아이디", "비밀번호", "폰번호", "메일", "주소","결제 정보"};
         // 테이블에 출력할 데이터를 가지고있는 디폴트모델테이블
         dft = new DefaultTableModel(colNames, 0) {
@@ -163,7 +167,8 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
         insert.setActionCommand("add");
         delete.setActionCommand("delete");
         update.setActionCommand("수정");
-
+        
+        //추가하기 버튼 리스너
         insert.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -182,7 +187,7 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
                 }
             }
         });
-
+        //삭제 버튼 리스너
         delete.addActionListener(new ActionListener() {
       
             public void actionPerformed(ActionEvent e) {
@@ -192,7 +197,7 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
                 
             }
         });
-      
+        // 뒤로가기 버튼 리스너
         back.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
@@ -202,7 +207,7 @@ public class MembershipManagerModeView extends JFrame implements ActionListener,
             }
         });
     }
-
+    // 수정 구현 메서드
     public void propertyChange(PropertyChangeEvent evt) {
         System.out.println("propertyChange()");
         System.out.println(evt.getPropertyName());

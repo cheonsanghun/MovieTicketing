@@ -6,9 +6,8 @@ package Controller;
 
 import Model.NoticeBoardManagerDao;
 
-/**
- *
- * @author Admin
+/*
+    게시판 컨트롤러 
  */
 public class NoticeBoardManagerController {
      private NoticeBoardManagerDao model;

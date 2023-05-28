@@ -9,7 +9,7 @@ import java.sql.SQLException;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import Model.Factory.TheaterPanel;
-import DbConnect.DbConnect;
+import DbConnect.Singleton.DbConnect;
 import Model.Factory.PayPanel;
 import View.Login.LoginSuccessView;
 import java.sql.Connection;
@@ -18,7 +18,7 @@ import java.sql.ResultSet;
 
 /**
  *
- * @author kjbg4
+ * 상태 패턴 적용
  */
 public class LoginController {
     
@@ -31,7 +31,7 @@ public class LoginController {
 
         void execute();
     }
-
+   // 로그인 성공일 때 다음 상태
     public class LoginSuccessState implements State {
         
         @Override
@@ -41,7 +41,7 @@ public class LoginController {
           
         }
     }
-
+    // 로그인 실패 일때 다음 상태
     public class LoginFailureState implements State {
 
         @Override
@@ -50,7 +50,7 @@ public class LoginController {
 
         }
     }
-
+    //로그인 에러 일때 화면 유지 상태
     public class LoginErrorState implements State {
 
         private String errorMessage;

@@ -25,9 +25,11 @@ import View.Membership.MembershipView;
 import View.Pw_Search.Pw_SearchView;
 import Model.Factory.TheaterPanel;
 import View.Membership.MembershipView;
-
+/*
+    로그인 화면
+*/
 public class LoginFrameView extends JFrame {
-
+    //스윙 필드
     List<LoginDto> companys;
     Connection conn;
     PreparedStatement stmt;

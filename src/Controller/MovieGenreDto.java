@@ -4,14 +4,9 @@
  */
 package Controller;
 
-/**
- *
- * @author kjbg4
- */
-
-    /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+/* 
+    영화관리에 대한 캡슐화 
+    빌더 패턴 적용
  */
 
 public class MovieGenreDto {
